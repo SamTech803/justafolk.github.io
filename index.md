@@ -1,12 +1,9 @@
-## Welcome to GitHub Pages
+## IDK WHAt TO DO
 
-You can use the [editor on GitHub](https://github.com/justafolk/justafolk.github.io/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
+KABHI KABHI LAGTA HAI APUNICH BHAGWAAN HAI
 ### Markdown
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+IDK MAN
 
 ```markdown
 Syntax highlighted code block
