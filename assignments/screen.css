@@ -1,0 +1,77 @@
+body{
+	background-color: dimgray;
+
+}
+h1 {
+	color: orange;
+	text-align: left;
+}
+.cwit{
+	background-color: dimgray;
+	padding: 2%;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	font-style: normal;
+	color: floralwhite;
+	text-align: left;
+	padding-bottom: 0cm;
+
+}
+.cur{
+	background-color: dimgray;
+	padding: 2%;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	font-style: normal;
+	color: floralwhite;
+	text-align: left;
+	padding-bottom: 0;
+}
+.comp{
+	background-color: dimgray;
+	padding: 2%;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	font-style: normal;
+	color: floralwhite;
+	text-align: left;
+	padding-bottom: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+img{
+	width: 30%;
+	float: right;
+}
+.lolwaa{
+	float: left;
+	background-color: dimgray;
+	padding: 2%;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	font-style: normal;
+	color: floralwhite;
+	text-align: left;
+	padding-bottom: 0;
+	box-sizing: border-box;
+	width: 40%;
+}
+.highlight {
+	background-color: yellow;
+}
+
+footer .highlight {
+	background-color: LightGray;
+}
