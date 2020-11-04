@@ -1,0 +1,522 @@
+﻿<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]>
+<!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+
+	<!-- Basic Page Needs
+	================================================== -->
+	<meta charset="utf-8">
+	<title>About Us</title>
+	<meta name="description" content="Professional Creative Template" />
+	<meta name="author" content="IG Design">
+	<meta name="keywords"
+		content="ig design, website, design, html5, css3, jquery, creative, clean, animated, portfolio, blog, one-page, multi-page, corporate, business," />
+	<meta property="og:title" content="Professional Creative Template" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="" />
+	<meta property="og:image" content="" />
+	<meta property="og:image:width" content="470" />
+	<meta property="og:image:height" content="246" />
+	<meta property="og:site_name" content="" />
+	<meta property="og:description" content="Professional Creative Template" />
+	<meta name="twitter:card" content="" />
+	<meta name="twitter:site" content="https://twitter.com/IvanGrozdic" />
+	<meta name="twitter:domain" content="http://ivang-design.com/" />
+	<meta name="twitter:title" content="" />
+	<meta name="twitter:description" content="Professional Creative Template" />
+	<meta name="twitter:image" content="http://ivang-design.com/" />
+
+	<!-- Mobile Specific Metas
+	================================================== -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="theme-color" content="#212121" />
+	<meta name="msapplication-navbutton-color" content="#212121" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="#212121" />
+
+	<!-- Web Fonts 
+	================================================== -->
+	<link
+		href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=devanagari,latin-ext"
+		rel="stylesheet">
+	<link
+		href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese"
+		rel="stylesheet">
+
+	<!-- CSS
+	================================================== -->
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
+	<link rel="stylesheet" href="css/font-awesome.min.css" />
+	<link rel="stylesheet" href="css/jquery.fancybox.min.css" />
+	<link rel="stylesheet" href="css/animsition.min.css" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	 
+
+  
+	<style>
+		@import url("https://fonts.googleapis.com/css?family=Cardo:400i|Rubik:400,700&display=swap");
+		:root {
+		  --d: 700ms;
+		  --e: cubic-bezier(0.19, 1, 0.22, 1);
+		  --font-sans: 'Rubik', sans-serif;
+		  --font-serif: 'Cardo', serif;
+		}
+		
+		
+		
+		html, body {
+		  height: 100%;
+		}
+		
+		
+		.page-content {
+		  display: grid;
+		  grid-gap: 1rem;
+		  padding: 1rem;
+		  max-width: 1024px;
+		  margin: 0 auto;
+		  font-family: var(--font-sans);
+		}
+		@media (min-width: 600px) {
+		  .page-content {
+			grid-template-columns: repeat(2, 1fr);
+		  }
+		}
+		@media (min-width: 800px) {
+		  .page-content {
+			grid-template-columns: repeat(4, 1fr);
+		  }
+		}
+		
+		.card {
+		  position: relative;
+		  display: -webkit-box;
+		  display: flex;
+		  -webkit-box-align: end;
+				  align-items: flex-end;
+		  overflow: hidden;
+		  padding: 1rem;
+		  width: 100%;
+		  text-align: center;
+		  color: whitesmoke;
+		  background-color: whitesmoke;
+		  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 2px 2px rgba(0, 0, 0, 0.1), 0 4px 4px rgba(0, 0, 0, 0.1), 0 8px 8px rgba(0, 0, 0, 0.1), 0 16px 16px rgba(0, 0, 0, 0.1);
+		}
+		@media (min-width: 600px) {
+		  .card {
+			height: 350px;
+		  }
+		}
+		.card:before {
+		  content: '';
+		  position: absolute;
+		  top: 0;
+		  left: 0;
+		  width: 100%;
+		  height: 110%;
+		  background-size: cover;
+		  background-position: 0 0;
+		  -webkit-transition: -webkit-transform calc(var(--d) * 1.5) var(--e);
+		  transition: -webkit-transform calc(var(--d) * 1.5) var(--e);
+		  transition: transform calc(var(--d) * 1.5) var(--e);
+		  transition: transform calc(var(--d) * 1.5) var(--e), -webkit-transform calc(var(--d) * 1.5) var(--e);
+		  pointer-events: none;
+		}
+		.card:after {
+		  content: '';
+		  display: block;
+		  position: absolute;
+		  top: 0;
+		  left: 0;
+		  width: 100%;
+		  height: 200%;
+		  pointer-events: none;
+		  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0)), color-stop(11.7%, rgba(0, 0, 0, 0.009)), color-stop(22.1%, rgba(0, 0, 0, 0.034)), color-stop(31.2%, rgba(0, 0, 0, 0.072)), color-stop(39.4%, rgba(0, 0, 0, 0.123)), color-stop(46.6%, rgba(0, 0, 0, 0.182)), color-stop(53.1%, rgba(0, 0, 0, 0.249)), color-stop(58.9%, rgba(0, 0, 0, 0.32)), color-stop(64.3%, rgba(0, 0, 0, 0.394)), color-stop(69.3%, rgba(0, 0, 0, 0.468)), color-stop(74.1%, rgba(0, 0, 0, 0.54)), color-stop(78.8%, rgba(0, 0, 0, 0.607)), color-stop(83.6%, rgba(0, 0, 0, 0.668)), color-stop(88.7%, rgba(0, 0, 0, 0.721)), color-stop(94.1%, rgba(0, 0, 0, 0.762)), to(rgba(0, 0, 0, 0.79)));
+		  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.009) 11.7%, rgba(0, 0, 0, 0.034) 22.1%, rgba(0, 0, 0, 0.072) 31.2%, rgba(0, 0, 0, 0.123) 39.4%, rgba(0, 0, 0, 0.182) 46.6%, rgba(0, 0, 0, 0.249) 53.1%, rgba(0, 0, 0, 0.32) 58.9%, rgba(0, 0, 0, 0.394) 64.3%, rgba(0, 0, 0, 0.468) 69.3%, rgba(0, 0, 0, 0.54) 74.1%, rgba(0, 0, 0, 0.607) 78.8%, rgba(0, 0, 0, 0.668) 83.6%, rgba(0, 0, 0, 0.721) 88.7%, rgba(0, 0, 0, 0.762) 94.1%, rgba(0, 0, 0, 0.79) 100%);
+		  -webkit-transform: translateY(-50%);
+				  transform: translateY(-50%);
+		  -webkit-transition: -webkit-transform calc(var(--d) * 2) var(--e);
+		  transition: -webkit-transform calc(var(--d) * 2) var(--e);
+		  transition: transform calc(var(--d) * 2) var(--e);
+		  transition: transform calc(var(--d) * 2) var(--e), -webkit-transform calc(var(--d) * 2) var(--e);
+		}
+		.card:nth-child(1):before {
+		  background-image: url(Ness.jpeg);
+		}
+		.card:nth-child(2):before {
+		  background-image: url(Nowrosjee.png);
+		}
+		.card:nth-child(3):before {
+		  background-image: url(Neville.jpeg);
+		}
+		.card:nth-child(4):before {
+		  background-image: url(https://images.unsplash.com/photo-1531306728370-e2ebd9d7bb99?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ);
+		}
+		
+		.content {
+		  position: relative;
+		  display: -webkit-box;
+		  display: flex;
+		  -webkit-box-orient: vertical;
+		  -webkit-box-direction: normal;
+				  flex-direction: column;
+		  -webkit-box-align: center;
+				  align-items: center;
+		  width: 100%;
+		  padding: 1rem;
+		  -webkit-transition: -webkit-transform var(--d) var(--e);
+		  transition: -webkit-transform var(--d) var(--e);
+		  transition: transform var(--d) var(--e);
+		  transition: transform var(--d) var(--e), -webkit-transform var(--d) var(--e);
+		  z-index: 1;
+		}
+		.content > * + * {
+		  margin-top: 1rem;
+		}
+		
+		.title {
+		  font-size: 1.1rem;
+		  font-weight: bold;
+		  line-height: 1.2;
+		}
+		
+		.copy {
+		  font-family: var(--font-serif);
+		  font-size: 1.050rem;
+		  font-style: italic;
+		  line-height: 1.35;
+		}
+		
+		.btn {
+		  cursor: pointer;
+		  margin-top: 1.5rem;
+		  padding: 0.75rem 1.5rem;
+		  font-size: 0.65rem;
+		  font-weight: bold;
+		  letter-spacing: 0.025rem;
+		  text-transform: uppercase;
+		  color: white;
+		  background-color: black;
+		  border: none;
+		}
+		.btn:hover {
+		  background-color: #0d0d0d;
+		}
+		.btn:focus {
+		  outline: 1px dashed yellow;
+		  outline-offset: 3px;
+		}
+		
+		@media (hover: hover) and (min-width: 600px) {
+		  .card:after {
+			-webkit-transform: translateY(0);
+					transform: translateY(0);
+		  }
+		
+		  .content {
+			-webkit-transform: translateY(calc(100% - 4.5rem));
+					transform: translateY(calc(100% - 4.5rem));
+		  }
+		  .content > *:not(.title) {
+			opacity: 0;
+			-webkit-transform: translateY(1rem);
+					transform: translateY(1rem);
+			-webkit-transition: opacity var(--d) var(--e), -webkit-transform var(--d) var(--e);
+			transition: opacity var(--d) var(--e), -webkit-transform var(--d) var(--e);
+			transition: transform var(--d) var(--e), opacity var(--d) var(--e);
+			transition: transform var(--d) var(--e), opacity var(--d) var(--e), -webkit-transform var(--d) var(--e);
+		  }
+		
+		  .card:hover,
+		  .card:focus-within {
+			-webkit-box-align: center;
+					align-items: center;
+		  }
+		  .card:hover:before,
+		  .card:focus-within:before {
+			-webkit-transform: translateY(-4%);
+					transform: translateY(-4%);
+		  }
+		  .card:hover:after,
+		  .card:focus-within:after {
+			-webkit-transform: translateY(-50%);
+					transform: translateY(-50%);
+		  }
+		  .card:hover .content,
+		  .card:focus-within .content {
+			-webkit-transform: translateY(0);
+					transform: translateY(0);
+		  }
+		  .card:hover .content > *:not(.title),
+		  .card:focus-within .content > *:not(.title) {
+			opacity: 1;
+			-webkit-transform: translateY(0);
+					transform: translateY(0);
+			-webkit-transition-delay: calc(var(--d) / 8);
+					transition-delay: calc(var(--d) / 8);
+		  }
+		
+		  .card:focus-within:before, .card:focus-within:after,
+		  .card:focus-within .content,
+		  .card:focus-within .content > *:not(.title) {
+			-webkit-transition-duration: 0s;
+					transition-duration: 0s;
+		  }
+		}
+		</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+  <script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+
+
+
+	
+
+	<!-- Favicons
+	================================================== -->
+	<link rel="icon" type="image/png" href="favicon.png">
+	<link rel="apple-touch-icon" href="apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="apple-touch-icon-114x114.png">
+		
+
+</head>
+
+<body>
+
+	<!-- Page preloader wrap
+	================================================== -->
+
+	<div class="animsition">
+
+		<!-- Nav and Logo
+		================================================== -->
+
+		<header class="cd-header">
+			<div class="header-wrapper">
+				<div class="logo-wrap">
+					<a href="index.html" class="cursor-link animsition-link"><img src="logo.jpeg" alt=""></a>
+				</div>
+				<div class="nav-but-wrap">
+					<div class="menu-icon cursor-link">
+						<span class="menu-icon__line menu-icon__line-left"></span>
+						<span class="menu-icon__line"></span>
+						<span class="menu-icon__line menu-icon__line-right"></span>
+					</div>
+				</div>
+			</div>
+		</header>
+
+		<div class="nav">
+			<div class="nav__content">
+				<ul class="nav__list">
+					<li class="nav__list-item"><a data-toggle="collapse" href="#collapseSub" class="cursor-link"
+							role="button" aria-expanded="false" aria-controls="collapseSub">work</a>
+						<ul class="sub-links collapse" id="collapseSub">
+							<li><a href="index.html" class="cursor-link animsition-link">case studies</a></li>
+							<li><a href="index-1.html" class="cursor-link animsition-link">hero slider</a></li>
+							<li><a href="index-2.html" class="cursor-link animsition-link">boring masonry</a></li>
+							<li><a href="index-3.html" class="cursor-link animsition-link">floating title</a></li>
+							<li><a href="index-4.html" class="cursor-link animsition-link">gallery version</a></li>
+						</ul>
+					</li>
+					<li class="nav__list-item active-nav"><a href="studio.html"
+							class="cursor-link animsition-link">studio</a></li>
+					<li class="nav__list-item"><a href="blog.html" class="cursor-link animsition-link">news</a></li>
+					<li class="nav__list-item"><a href="contact.html" class="cursor-link animsition-link">contact</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<!-- Primary Page Layout
+		================================================== -->
+
+		<div class="section padding-page-top padding-bottom over-hide background-dark-2">
+			<div class="container">
+				<div class="row">
+					<div class="col-12 section-title-wrap text-center parallax-fade-top">
+						<p>Modern Society's</p>
+						<h1>Cusrow Wadia Institute<br>of Technology</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="section padding-bottom over-hide background-dark-2">
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-md-8 text-center">
+						<p class="mb-0 pb-0 lead">The Cusrow Wadia Institute of Technology, Pune was started by the
+							Modern Education Society, Pune. The Society itself was founded by Late Prin. V. K. Joag, an
+							eminent Educationalist and Late Sir Cusrow Wadia, an Industrialist of repute. The Institute
+							made an humble beginning in 1938 with setting up of Department of Applied Electricity. Since
+							then the Institute has made rapid progress and today it is a full-fledged Polytechnic with a
+							multifarious activities under its umbrella.
+
+							The Institute has completed 75 years of its yeomen services for the cause of Technical
+							Education.</p>
+					</div>
+					<div class="section clearfix"></div>
+					<div class="col-md-12 padding-top-bottom">
+						<div class="img-wrap">
+							<img src="img/download.png" alt="">
+						</div>
+					</div>
+					<div class="section padding-page-top padding-bottom over-hide background-dark-2">
+						<div class="container">
+							<div class="row">
+								<div class="col-12 section-title-wrap text-center ">
+
+									<h1>About Our Logo</h1>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="section clearfix"></div>
+					<div class="col-md-4 text-center cursor-link-blog-post-1 animsition-link tipped"
+						data-title="<span><em>MESP</em></span>"
+						data-tipper-options='{"direction":"top","follow":"true","margin":60}'
+						data-scroll-reveal="enter bottom move 30px over 0.5s after 0.2s">
+						<h5 class="mb-3">The Sailing Ship</h5>
+						<p class="mb-0 pb-0">Crossing the SEA can be viewed as being symbolic of making the journey
+							across life; therefore, a ship is seen as that which enables us to make such a journey,
+							whether it be faith, education, desire, curiosity, and motivation. </p>
+
+					</div>
+					<div class="col-md-4 text-center mt-5 mt-md-0 cursor-link-blog-post-2 animsition-link tipped"
+						data-scroll-reveal="enter bottom move 30px over 0.5s after 0.2s"
+						data-title=" <span><em>MESP</em></span>"
+						data-tipper-options='{"direction":"top","follow":"true","margin":60}'>
+						<h5 class="mb-3">The Sun Rise</h5>
+						<p class="mb-0 pb-0">The symbol represents a new life or hope, where there is a new beginning of
+							the journey of students in education.</p>
+					</div>
+					<div class="section clearfix"></div>
+					<div class="col-md-4 text-center mt-5 cursor-link-blog-post-3 animsition-link tipped"
+						data-title="<span><em>MESP</em></span>"
+						data-tipper-options='{"direction":"top","follow":"true","margin":60}'
+						data-scroll-reveal="enter bottom move 30px over 0.5s after 0.2s">
+						<h5 class="mb-3">The Open Book</h5>
+						<p class="mb-0 pb-0">The open book is a symbol of learning and knowledge. Books symbolize the
+							power of imagination and the freedom to think and discuss ideas, both positive and negative
+						</p>
+					</div>
+					<div class="col-md-4 text-center mt-5 cursor-link-blog-post-4 animsition-link tipped"
+						data-title="<span><em>MESP</em></span>"
+						data-tipper-options='{"direction":"top","follow":"true","margin":60}'
+						data-scroll-reveal="enter bottom move 30px over 0.5s after 0.2s">
+						<h5 class="mb-3">The Axe In Hand</h5>
+						<p class="mb-0 pb-0">It symbolises creation , of ideas and invention and also it is said to
+							represent swift and balancedjustice. </p>
+					</div>
+				</div>
+			
+			
+		<div class="section clearfix"></div>
+		<div class="section padding-page-top padding-bottom over-hide background-dark-2">
+			<div class="container">
+				<div class="row">
+					<div class="col-12 section-title-wrap text-center ">
+						<h2>
+							Sister Institutes
+						</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+			<main class="page-content">
+			<div class="card">
+			  <div class="content">
+				<h2 class="title">Ness Wadia</h2>
+				<p class="copy">
+					Inaugurated on 15th July, 1969 by Dr. H. V. Patskar, then the college has come along to become one
+					of the best colleges for commerce in Pune.</p>
+				<button class="btn">Read More!</button>
+			  </div>
+			</div>
+			<div class="card">
+			  <div class="content">
+				<h2 class="title">Nowrosjee Wadia</h2>
+				<p class="copy">Nowrosjee Wadia College is one of the leading institute of Pune. A well defined infrastructure and
+				an elegant ambience for the Science and Arts faculties has been developed.</p>
+				<button class="btn">Read More!</button>
+			  </div>
+			</div>
+			<div class="card">
+			  <div class="content">
+				<h2 class="title">Neville Wadia</h2>
+				<p class="copy">Neville Wadia Institute of management studies and research was started by modern education society
+					in 1994. The management programmes include MBA, MCM and MPM.</p>
+				<button class="btn">Read More!</button>
+			  </div>
+			</div>
+			<div class="card">
+			  <div class="content">
+				<h2 class="title"> M.E.S College</h2>
+				<p class="copy">Located in the same campus the M.E.S College of Engineering has gained a lot of popularity. It
+					offers degree courses in the fields of Computers, Mechanical and Electronics.</p>
+				<button class="btn">Read More!</button>
+			  </div>
+			</div>
+		  </main>
+		</div>	
+		</div>
+		
+
+		<div class="section padding-top-bottom-small background-black">
+			<div class="container-fluid px-5">
+				<div class="row">
+					
+					<div class="col-md-6 mt-4 mt-md-0 text-center">
+						<div class="social-wrap on-footer">
+							follow us
+							<ul>
+								<li><a href="#" class="cursor-link">fb</a></li>
+								<li><a href="#" class="cursor-link">tw</a></li>
+								<li><a href="#" class="cursor-link">be</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="scroll-to-top cursor-link"></div>
+
+		<!-- Page cursor
+	================================================== -->
+
+		<div class="cursor cursor-shadow"></div>
+		<div class="cursor cursor-dot"></div>
+
+
+	</div>
+
+	<!-- JAVASCRIPT
+    ================================================== -->
+	<script src="js/jquery.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/plugins.js"></script>
+	<script src="js/custom.js"></script>
+	<!-- End Document
+================================================== -->
+</body>
+
+</html>
