@@ -1,32 +1,4630 @@
+<!DOCTYPE html>
+
+<!-- This code was generated using AnimaApp.com. 
+This code is a high-fidelity prototype.
+Get developer-friendly React or HTML/CSS code for this project at: https://projects.animaapp.com?utm_source=hosted-code 
+07/09/2021 18:01:38 -->
+
+<html>
+
 <head>
-    <link rel="stylesheet/less" type="text/css" href="styles/main.less" />
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.7.2/less.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.terminal/1.4.3/js/jquery.terminal.js"></script>
-    <script type="text/javascript" src="src/shell.js"></script>
-    <script type="text/javascript" src="src/cli.js"></script>
-  </head>
-  
-  <body>
-  
-  <div class="terminal-window">
-    <header>
-      <div class="button red"></div>
-      <div class="button yellow"></div>
-      <div class="button green"></div>
-    </header>
-    <div id="terminal">
-      <p><span class="green">\[._.]/</span> - you're in justafolk's cli! type `help` to get started.</p>
-        <p class="hidden">
-          <span class="prompt">
-            <span class="root">root</span>
-            <span class="tick">❯</span>
-          </span>
-          <span contenteditable="true" class="input"></span>
-        </p>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <link rel="shortcut icon" type="image/png" href="https://animaproject.s3.amazonaws.com/home/favicon.png">
+  <meta name="og:type" content="website">
+  <meta name="twitter:card" content="photo">
+  <script id="anima-hotspots-script" src="hotspots.js"></script>
+  <script id="anima-overrides-script" src="overrides.js"></script>
+  <script src="https://animaapp.s3.amazonaws.com/js/timeline.js"></script>
+  <style>
+    @import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
+
+    @import url("https://fonts.googleapis.com/css?family=Poppins:400,700,300,500,600|Space+Mono:400,700|Roboto:400");
+
+    .screen textarea:focus,
+    .screen input:focus {
+      outline: none;
+    }
+
+    .screen * {
+      -webkit-font-smoothing: antialiased;
+      box-sizing: border-box;
+    }
+
+    .screen div {
+      -webkit-text-size-adjust: none;
+    }
+
+    .component-wrapper a {
+      display: contents;
+      pointer-events: auto;
+      text-decoration: none;
+    }
+
+    .component-wrapper * {
+      -webkit-font-smoothing: antialiased;
+      box-sizing: border-box;
+      pointer-events: none;
+    }
+
+    .component-wrapper a *,
+    .component-wrapper input,
+    .component-wrapper video,
+    .component-wrapper iframe {
+      pointer-events: auto;
+    }
+
+    .component-wrapper.not-ready,
+    .component-wrapper.not-ready * {
+      visibility: hidden !important;
+    }
+
+    .screen a {
+      display: contents;
+      text-decoration: none;
+    }
+
+    .full-width-a {
+      width: 100%;
+    }
+
+    .full-height-a {
+      height: 100%;
+    }
+
+    .container-center-vertical {
+      align-items: center;
+      display: flex;
+      flex-direction: row;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .container-center-vertical>* {
+      flex-shrink: 0;
+      pointer-events: auto;
+    }
+
+    .container-center-horizontal {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      pointer-events: none;
+      width: 100%;
+    }
+
+    .container-center-horizontal>* {
+      flex-shrink: 0;
+      pointer-events: auto;
+    }
+
+    .auto-animated div {
+      --z-index: -1;
+      opacity: 0;
+      position: absolute;
+    }
+
+    .auto-animated .container-center-vertical,
+    .auto-animated .container-center-horizontal {
+      opacity: 1;
+    }
+
+    .overlay {
+      display: none;
+      height: 100%;
+      opacity: 0;
+      position: fixed;
+      top: 0;
+      width: 100%;
+    }
+
+    .overlay.animate-appear {
+      animation: reveal 0.3s ease-in-out 1 normal forwards;
+      display: block;
+      opacity: 0;
+    }
+
+    .overlay.animate-disappear {
+      animation: reveal 0.3s ease-in-out 1 reverse forwards;
+      display: block;
+      opacity: 1;
+    }
+
+    @keyframes reveal {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    .animate-nodelay {
+      animation-delay: 0s;
+    }
+
+    .align-self-flex-start {
+      align-self: flex-start;
+    }
+
+    .align-self-flex-end {
+      align-self: flex-end;
+    }
+
+    .align-self-flex-center {
+      align-self: flex-center;
+    }
+
+    .valign-text-middle {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .valign-text-bottom {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    input:focus {
+      outline: none;
+    }
+
+    .listeners-active,
+    .listeners-active * {
+      pointer-events: auto;
+    }
+
+    .hidden,
+    .hidden * {
+      pointer-events: none;
+      visibility: hidden;
+    }
+
+    .smart-layers-pointers,
+    .smart-layers-pointers * {
+      pointer-events: auto;
+      visibility: visible;
+    }
+
+    .listeners-active-click,
+    .listeners-active-click * {
+      cursor: pointer;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    :root {
+      --mercury: #e4e4e4;
+      --mirage: #081c2b;
+      --nobel: #b4b1b1;
+      --pickled-bluewood: #274056;
+      --sonic-silver: #6f7078;
+      --white: #ffffff;
+
+      --font-size-l: 18px;
+      --font-size-m: 14px;
+      --font-size-s: 13px;
+      --font-size-xl: 20px;
+      --font-size-xs: 12px;
+      --font-size-xxl: 36px;
+      --font-size-xxs: 11px;
+
+      --font-family-poppins: "Poppins", Helvetica;
+      --font-family-roboto: "Roboto", Helvetica;
+      --font-family-space_mono: "Space Mono", Helvetica;
+    }
+
+    .poppins-semi-bold-white-36px {
+      color: var(--white);
+      font-family: var(--font-family-poppins);
+      font-size: var(--font-size-xxl);
+      font-style: normal;
+      font-weight: 600;
+    }
+
+    .poppins-bold-white-18px {
+      color: var(--white);
+      font-family: var(--font-family-poppins);
+      font-size: var(--font-size-l);
+      font-style: normal;
+      font-weight: 700;
+    }
+
+    .spacemono-bold-nobel-13px {
+      color: var(--nobel);
+      font-family: var(--font-family-space_mono);
+      font-size: var(--font-size-s);
+      font-style: normal;
+      font-weight: 700;
+    }
+
+    .spacemono-bold-sonic-silver-11px {
+      color: var(--sonic-silver);
+      font-family: var(--font-family-space_mono);
+      font-size: var(--font-size-xxs);
+      font-style: normal;
+      font-weight: 700;
+    }
+
+    .poppins-semi-bold-white-48px {
+      color: var(--white);
+      font-family: var(--font-family-poppins);
+      font-size: 48px;
+      font-style: normal;
+      font-weight: 600;
+    }
+
+    .spacemono-bold-sonic-silver-12px {
+      color: var(--sonic-silver);
+      font-family: var(--font-family-space_mono);
+      font-size: var(--font-size-xs);
+      font-style: normal;
+      font-weight: 700;
+    }
+
+    .poppins-bold-white-24px {
+      color: var(--white);
+      font-family: var(--font-family-poppins);
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 700;
+    }
+
+    .spacemono-bold-nobel-14px {
+      color: var(--nobel);
+      font-family: var(--font-family-space_mono);
+      font-size: var(--font-size-m);
+      font-style: normal;
+      font-weight: 700;
+    }
+
+    .poppins-light-white-18px {
+      color: var(--white);
+      font-family: var(--font-family-poppins);
+      font-size: var(--font-size-l);
+      font-style: normal;
+      font-weight: 300;
+    }
+
+    .poppins-medium-white-20px {
+      color: var(--white);
+      font-family: var(--font-family-poppins);
+      font-size: var(--font-size-xl);
+      font-style: normal;
+      font-weight: 500;
+    }
+
+    .poppins-normal-white-14px {
+      color: var(--white);
+      font-family: var(--font-family-poppins);
+      font-size: var(--font-size-m);
+      font-style: normal;
+      font-weight: 400;
+    }
+
+    .poppins-light-white-13px {
+      color: var(--white);
+      font-family: var(--font-family-poppins);
+      font-size: var(--font-size-s);
+      font-style: normal;
+      font-weight: 300;
+    }
+
+    .poppins-medium-white-14px {
+      color: var(--white);
+      font-family: var(--font-family-poppins);
+      font-size: var(--font-size-m);
+      font-style: normal;
+      font-weight: 500;
+    }
+
+    .poppins-normal-white-12px {
+      color: var(--white);
+      font-family: var(--font-family-poppins);
+      font-size: var(--font-size-xs);
+      font-style: normal;
+      font-weight: 400;
+    }
+
+    .spacemono-normal-mercury-14px {
+      color: var(--mercury);
+      font-family: var(--font-family-space_mono);
+      font-size: var(--font-size-m);
+      font-style: normal;
+      font-weight: 400;
+    }
+
+    .spacemono-normal-mercury-18px {
+      color: var(--mercury);
+      font-family: var(--font-family-space_mono);
+      font-size: var(--font-size-l);
+      font-style: normal;
+      font-weight: 400;
+    }
+
+
+    /* screen - google-pixel-2-1 */
+
+    .google-pixel-2-1 {
+      background-color: #001220;
+      height: 100vh;
+      margin: 0px;
+      min-height: 4587px;
+      min-width: 396px;
+      mix-blend-mode: normal;
+      overflow: hidden;
+      overflow-x: hidden;
+      position: relative;
+      width: 100%;
+    }
+
+    .google-pixel-2-1 .section-1-1xqTZi {
+      background-color: transparent;
+      height: 560px;
+      left: 0px;
+      position: absolute;
+      top: calc(50.00% - 2226px);
+      width: calc(100.00% + 4px);
+    }
+
+    .google-pixel-2-1 .layered-waves-haikei-4-gWxHKZ {
+      background-color: transparent;
+      display: block;
+      height: 466px;
+      left: 0px;
+      mix-blend-mode: normal;
+      overflow: hidden;
+      position: absolute;
+      top: calc(50.00% - 186px);
+      width: calc(100.00% - 4px);
+      opacity: 0;
+      transform: translate(0, 25px);
+    }
+
+    .google-pixel-2-1 .layered-waves-haikei-4-gWxHKZ.bp2-animate-enter {
+      animation: bp2-animate-enter-frames 0.20s ease-in-out 0.00s 1 normal forwards;
+      display: block;
+      opacity: 0;
+      transform: translate(0, 25px);
+    }
+
+    @keyframes bp2-animate-enter-frames {
+      from {
+        opacity: 0;
+        transform: translate(0, 25px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translate(0, 0);
+      }
+    }
+
+    .google-pixel-2-1 .vector-D8w1Qc {
+      background-color: transparent;
+      height: 100%;
+      left: 0px;
+      mix-blend-mode: normal;
+      position: absolute;
+      top: 0px;
+      width: 100%;
+    }
+
+    .google-pixel-2-1 .vector-dgUGoT {
+      background-color: transparent;
+      height: 40.13%;
+      left: 0px;
+      mix-blend-mode: normal;
+      position: absolute;
+      top: 60.06%;
+      width: 100%;
+    }
+
+    .google-pixel-2-1 .vector-QNYzc5 {
+      background-color: transparent;
+      height: 31.76%;
+      left: 0px;
+      mix-blend-mode: normal;
+      position: absolute;
+      top: 68.46%;
+      width: 100%;
+    }
+
+    .google-pixel-2-1 .vector-Cb3W6N {
+      background-color: transparent;
+      height: 24.68%;
+      left: 0px;
+      mix-blend-mode: normal;
+      position: absolute;
+      top: 75.51%;
+      width: 100%;
+    }
+
+    .google-pixel-2-1 .vector-76VupT {
+      background-color: transparent;
+      height: 16.85%;
+      left: 0px;
+      mix-blend-mode: normal;
+      position: absolute;
+      top: 83.35%;
+      width: 100%;
+    }
+
+    .google-pixel-2-1 .vector-rYSUfp {
+      background-color: transparent;
+      height: 10.41%;
+      left: 0px;
+      mix-blend-mode: normal;
+      position: absolute;
+      top: 89.81%;
+      width: 100%;
+    }
+
+    .google-pixel-2-1 .group-1-gWxHKZ {
+      background-color: transparent;
+      display: block;
+      height: 19px;
+      left: 25px;
+      position: absolute;
+      top: 497px;
+      width: 160px;
+      opacity: 0;
+      transform: translate(0, 25px);
+    }
+
+    .google-pixel-2-1 .group-1-gWxHKZ.bp2-animate-enter1 {
+      animation: bp2-animate-enter1-frames 0.20s ease-in-out 0.00s 1 normal forwards;
+      display: block;
+      opacity: 0;
+      transform: translate(0, 25px);
+    }
+
+    @keyframes bp2-animate-enter1-frames {
+      from {
+        opacity: 0;
+        transform: translate(0, 25px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translate(0, 0);
+      }
+    }
+
+    .google-pixel-2-1 .image-1-DyQ3IJ {
+      background-color: transparent;
+      height: 19px;
+      left: 0px;
+      mix-blend-mode: normal;
+      object-fit: cover;
+      position: absolute;
+      top: 0px;
+      width: 21px;
+    }
+
+    .google-pixel-2-1 .image-2-DyQ3IJ {
+      background-color: transparent;
+      height: 19px;
+      left: 34px;
+      mix-blend-mode: normal;
+      object-fit: cover;
+      position: absolute;
+      top: 0px;
+      width: 22px;
+    }
+
+    .google-pixel-2-1 .image-3-DyQ3IJ {
+      background-color: transparent;
+      height: 19px;
+      left: 69px;
+      mix-blend-mode: normal;
+      object-fit: cover;
+      position: absolute;
+      top: 0px;
+      width: 21px;
+    }
+
+    .google-pixel-2-1 .image-4-DyQ3IJ {
+      background-color: transparent;
+      height: 19px;
+      left: 104px;
+      mix-blend-mode: normal;
+      object-fit: cover;
+      position: absolute;
+      top: 0px;
+      width: 22px;
+    }
+
+    .google-pixel-2-1 .image-5-DyQ3IJ {
+      background-color: transparent;
+      height: 19px;
+      left: 139px;
+      mix-blend-mode: normal;
+      object-fit: cover;
+      position: absolute;
+      top: 0px;
+      width: 21px;
+    }
+
+    .google-pixel-2-1 .image-18-gWxHKZ {
+      background-color: transparent;
+      display: block;
+      height: 200px;
+      mix-blend-mode: normal;
+      object-fit: cover;
+      position: absolute;
+      right: 24px;
+      top: 337px;
+      width: 160px;
+      opacity: 0;
+      transform: translate(0, 25px);
+    }
+
+    .google-pixel-2-1 .image-18-gWxHKZ.bp2-animate-enter2 {
+      animation: bp2-animate-enter2-frames 0.20s ease-in-out 0.00s 1 normal forwards;
+      display: block;
+      opacity: 0;
+      transform: translate(0, 25px);
+    }
+
+    @keyframes bp2-animate-enter2-frames {
+      from {
+        opacity: 0;
+        transform: translate(0, 25px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translate(0, 0);
+      }
+    }
+
+    .google-pixel-2-1 .hey-im-avdhut-kamble-gWxHKZ {
+      background-color: transparent;
+      display: block;
+      height: auto;
+      left: 28px;
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      position: absolute;
+      text-align: left;
+      top: 0px;
+      width: 321px;
+      opacity: 0;
+      transform: translate(0, 25px);
+    }
+
+    .google-pixel-2-1 .hey-im-avdhut-kamble-gWxHKZ.bp2-animate-enter3 {
+      animation: bp2-animate-enter3-frames 0.20s ease-in-out 0.00s 1 normal forwards;
+      display: block;
+      opacity: 0;
+      transform: translate(0, 25px);
+    }
+
+    @keyframes bp2-animate-enter3-frames {
+      from {
+        opacity: 0;
+        transform: translate(0, 25px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translate(0, 0);
+      }
+    }
+
+    .google-pixel-2-1 .let-me-tell-you-games-and-music-gWxHKZ {
+      background-color: transparent;
+      color: var(--white);
+      display: block;
+      font-family: var(--font-family-space_mono);
+      font-size: var(--font-size-m);
+      font-style: normal;
+      font-weight: 400;
+      height: auto;
+      left: 28px;
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      position: absolute;
+      text-align: left;
+      top: 122px;
+      width: 304px;
+      opacity: 0;
+      transform: translate(0, 25px);
+    }
+
+    .google-pixel-2-1 .let-me-tell-you-games-and-music-gWxHKZ.bp2-animate-enter4 {
+      animation: bp2-animate-enter4-frames 0.20s ease-in-out 0.00s 1 normal forwards;
+      display: block;
+      opacity: 0;
+      transform: translate(0, 25px);
+    }
+
+    @keyframes bp2-animate-enter4-frames {
+      from {
+        opacity: 0;
+        transform: translate(0, 25px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translate(0, 0);
+      }
+    }
+
+    .google-pixel-2-1 .section-2-1xqTZi {
+      background-color: transparent;
+      height: 1445px;
+      left: 0px;
+      position: absolute;
+      top: 637px;
+      width: calc(100.00% + 2px);
+    }
+
+    .google-pixel-2-1 .layered-waves-haikei-6-mGwtNE {
+      background-color: transparent;
+      height: 720px;
+      left: 0px;
+      mix-blend-mode: normal;
+      overflow: hidden;
+      position: absolute;
+      top: 725px;
+      width: calc(100.00% - 2px);
+    }
+
+    .google-pixel-2-1 .vector-G9Wbbf {
+      background-color: transparent;
+      height: 38.06%;
+      left: 0px;
+      mix-blend-mode: normal;
+      position: absolute;
+      top: 62.08%;
+      width: 100%;
+    }
+
+    .google-pixel-2-1 .vector-fpWBIO {
+      background-color: transparent;
+      height: 31.53%;
+      left: 0px;
+      mix-blend-mode: normal;
+      position: absolute;
+      top: 68.61%;
+      width: 100%;
+    }
+
+    .google-pixel-2-1 .vector-vtceCx {
+      background-color: transparent;
+      height: 25.69%;
+      left: 0px;
+      mix-blend-mode: normal;
+      position: absolute;
+      top: 74.44%;
+      width: 100%;
+    }
+
+    .google-pixel-2-1 .vector-fQq8Oj {
+      background-color: transparent;
+      height: 16.94%;
+      left: 0px;
+      mix-blend-mode: normal;
+      position: absolute;
+      top: 83.20%;
+      width: 100%;
+    }
+
+    .google-pixel-2-1 .vector-Pgjy3K {
+      background-color: transparent;
+      height: 9.58%;
+      left: 0px;
+      mix-blend-mode: normal;
+      position: absolute;
+      top: 90.56%;
+      width: 100%;
+    }
+
+    .google-pixel-2-1 .group-5-G9Wbbf {
+      background-color: transparent;
+      height: 32.64%;
+      left: 7.83%;
+      position: absolute;
+      top: 17.36%;
+      width: 85.70%;
+    }
+
+    .google-pixel-2-1 .rectangle-1-bVsxKx {
+      background-color: var(--mirage);
+      border-radius: 25px;
+      height: 100%;
+      left: 0px;
+      mix-blend-mode: normal;
+      position: absolute;
+      top: 0px;
+      width: 98.23%;
+    }
+
+    .google-pixel-2-1 .automate-birthday-emails-bVsxKx {
+      background-color: transparent;
+      height: 23.83%;
+      left: 5.07%;
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      position: absolute;
+      text-align: left;
+      top: 4.68%;
+      width: 71.31%;
+    }
+
+    .google-pixel-2-1 .image-1-bVsxKx {
+      background-color: transparent;
+      height: 10.43%;
+      left: 88.67%;
+      mix-blend-mode: normal;
+      object-fit: cover;
+      position: absolute;
+      top: 85.20%;
+      width: 6.34%;
+    }
+
+    .google-pixel-2-1 .automate-birthd-n-various-means-bVsxKx {
+      background-color: transparent;
+      height: 61.28%;
+      left: 5.11%;
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      position: absolute;
+      text-align: left;
+      top: 34.04%;
+      width: 89.74%;
+    }
+
+    .google-pixel-2-1 .august-26th-2020-bVsxKx {
+      background-color: transparent;
+      height: 10.64%;
+      left: 70.78%;
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      position: absolute;
+      text-align: left;
+      top: 19.15%;
+      width: 24.75%;
+    }
+
+    .google-pixel-2-1 .group-2-G9Wbbf {
+      background-color: transparent;
+      height: 32.64%;
+      left: 7.83%;
+      position: absolute;
+      top: 53.06%;
+      width: 85.70%;
+    }
+
+    .google-pixel-2-1 .rectangle-1-XQvfqF {
+      background-color: var(--mirage);
+      border-radius: 25px;
+      height: 100%;
+      left: 0px;
+      mix-blend-mode: normal;
+      position: absolute;
+      top: 0px;
+      width: 98.23%;
+    }
+
+    .google-pixel-2-1 .automate-birthday-emails-XQvfqF {
+      background-color: transparent;
+      height: 23.83%;
+      left: 5.07%;
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      position: absolute;
+      text-align: left;
+      top: 4.68%;
+      width: 71.31%;
+    }
+
+    .google-pixel-2-1 .image-1-XQvfqF {
+      background-color: transparent;
+      height: 10.43%;
+      left: 88.67%;
+      mix-blend-mode: normal;
+      object-fit: cover;
+      position: absolute;
+      top: 85.20%;
+      width: 6.34%;
+    }
+
+    .google-pixel-2-1 .automate-birthd-n-various-means-XQvfqF {
+      background-color: transparent;
+      height: 61.28%;
+      left: 5.11%;
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      position: absolute;
+      text-align: left;
+      top: 34.04%;
+      width: 89.74%;
+    }
+
+    .google-pixel-2-1 .august-26th-2020-XQvfqF {
+      background-color: transparent;
+      height: 10.64%;
+      left: 70.78%;
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      position: absolute;
+      text-align: left;
+      top: 19.15%;
+      width: 24.75%;
+    }
+
+    .google-pixel-2-1 .projects-mGwtNE {
+      background-color: transparent;
+      display: block;
+      height: auto;
+      left: calc(50.00% - 75px);
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      position: absolute;
+      text-align: center;
+      top: 1px;
+      width: 158px;
+      opacity: 0;
+      transform: translate(0, 25px);
+    }
+
+    .google-pixel-2-1 .projects-mGwtNE.bp2-animate-enter5 {
+      animation: bp2-animate-enter5-frames 0.50s ease-in-out 0.00s 1 normal forwards;
+      display: block;
+      opacity: 0;
+      transform: translate(0, 25px);
+    }
+
+    @keyframes bp2-animate-enter5-frames {
+      from {
+        opacity: 0;
+        transform: translate(0, 25px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translate(0, 0);
+      }
+    }
+
+    .google-pixel-2-1 .group-2-mGwtNE {
+      background-color: transparent;
+      height: 16.26%;
+      left: 7.99%;
+      position: absolute;
+      top: 5.19%;
+      width: 85.27%;
+    }
+
+    .google-pixel-2-1 .rectangle-1-KMoxPL {
+      background-color: var(--mirage);
+      border-radius: 25px;
+      height: 100%;
+      left: 0px;
+      mix-blend-mode: normal;
+      position: absolute;
+      top: 0px;
+      width: 98.23%;
+    }
+
+    .google-pixel-2-1 .automate-birthday-emails-KMoxPL {
+      background-color: transparent;
+      height: auto;
+      left: 5.07%;
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      position: absolute;
+      text-align: left;
+      top: calc(50.00% - 106px);
+      width: 71.31%;
+    }
+
+    .google-pixel-2-1 .image-1-KMoxPL {
+      background-color: transparent;
+      height: 10.43%;
+      left: 88.60%;
+      mix-blend-mode: normal;
+      object-fit: cover;
+      position: absolute;
+      top: 85.20%;
+      width: 6.48%;
+    }
+
+    .google-pixel-2-1 .automate-birthd-n-various-means-KMoxPL {
+      background-color: transparent;
+      height: auto;
+      left: 5.11%;
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      position: absolute;
+      text-align: left;
+      top: calc(50.00% - 38px);
+      width: 89.74%;
+    }
+
+    .google-pixel-2-1 .august-26th-2020-KMoxPL {
+      background-color: transparent;
+      height: 10.64%;
+      left: 70.78%;
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      position: absolute;
+      text-align: left;
+      top: 19.15%;
+      width: 24.75%;
+    }
+
+    .google-pixel-2-1 .group-3-mGwtNE {
+      background-color: transparent;
+      height: 16.26%;
+      left: 7.79%;
+      position: absolute;
+      top: 23.18%;
+      width: 85.27%;
+    }
+
+    .google-pixel-2-1 .rectangle-1-qc0Bxv {
+      background-color: var(--mirage);
+      border-radius: 25px;
+      height: 100%;
+      left: 0px;
+      mix-blend-mode: normal;
+      position: absolute;
+      top: 0px;
+      width: 98.23%;
+    }
+
+    .google-pixel-2-1 .automate-birthday-emails-qc0Bxv {
+      background-color: transparent;
+      height: auto;
+      left: 5.07%;
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      position: absolute;
+      text-align: left;
+      top: calc(50.00% - 106px);
+      width: 71.31%;
+    }
+
+    .google-pixel-2-1 .image-1-qc0Bxv {
+      background-color: transparent;
+      height: 10.43%;
+      left: 88.67%;
+      mix-blend-mode: normal;
+      object-fit: cover;
+      position: absolute;
+      top: 85.20%;
+      width: 6.34%;
+    }
+
+    .google-pixel-2-1 .automate-birthd-n-various-means-qc0Bxv {
+      background-color: transparent;
+      height: auto;
+      left: 5.11%;
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      position: absolute;
+      text-align: left;
+      top: calc(50.00% - 38px);
+      width: 89.74%;
+    }
+
+    .google-pixel-2-1 .august-26th-2020-qc0Bxv {
+      background-color: transparent;
+      height: 10.64%;
+      left: 70.78%;
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      position: absolute;
+      text-align: left;
+      top: 19.15%;
+      width: 24.75%;
+    }
+
+    .google-pixel-2-1 .group-4-mGwtNE {
+      background-color: transparent;
+      height: 16.26%;
+      left: 7.79%;
+      position: absolute;
+      top: 41.18%;
+      width: 85.27%;
+    }
+
+    .google-pixel-2-1 .rectangle-1-0xsca6 {
+      background-color: var(--mirage);
+      border-radius: 25px;
+      height: 100%;
+      left: 0px;
+      mix-blend-mode: normal;
+      position: absolute;
+      top: 0px;
+      width: 98.23%;
+    }
+
+    .google-pixel-2-1 .automate-birthday-emails-0xsca6 {
+      background-color: transparent;
+      height: auto;
+      left: 5.07%;
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      position: absolute;
+      text-align: left;
+      top: calc(50.00% - 106px);
+      width: 71.31%;
+    }
+
+    .google-pixel-2-1 .image-1-0xsca6 {
+      background-color: transparent;
+      height: 10.43%;
+      left: 88.67%;
+      mix-blend-mode: normal;
+      object-fit: cover;
+      position: absolute;
+      top: 85.20%;
+      width: 6.34%;
+    }
+
+    .google-pixel-2-1 .automate-birthd-n-various-means-0xsca6 {
+      background-color: transparent;
+      height: auto;
+      left: 5.11%;
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      position: absolute;
+      text-align: left;
+      top: calc(50.00% - 38px);
+      width: 89.74%;
+    }
+
+    .google-pixel-2-1 .august-26th-2020-0xsca6 {
+      background-color: transparent;
+      height: 10.64%;
+      left: 70.78%;
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      position: absolute;
+      text-align: left;
+      top: 19.15%;
+      width: 24.75%;
+    }
+
+    .google-pixel-2-1 .section-3-1xqTZi {
+      background-color: transparent;
+      height: 621px;
+      left: -53px;
+      position: absolute;
+      top: calc(50.00% - 180px);
+      width: calc(100.00% + 923px);
+    }
+
+    .google-pixel-2-1 .layered-waves-haikei-3-mo2Lst {
+      background-color: transparent;
+      height: 497px;
+      left: 53px;
+      mix-blend-mode: normal;
+      position: absolute;
+      top: calc(50.00% - 186px);
+      width: calc(100.00% - 55px);
+    }
+
+    .google-pixel-2-1 .vector-7eFAqe {
+      background-color: transparent;
+      height: 37.22%;
+      left: 0px;
+      mix-blend-mode: normal;
+      position: absolute;
+      top: 62.99%;
+      width: 100%;
+    }
+
+    .google-pixel-2-1 .vector-l9Zqml {
+      background-color: transparent;
+      height: 34.41%;
+      left: 0px;
+      mix-blend-mode: normal;
+      position: absolute;
+      top: 65.78%;
+      width: 100%;
+    }
+
+    .google-pixel-2-1 .vector-p2WbEi {
+      background-color: transparent;
+      height: 25.75%;
+      left: 0px;
+      mix-blend-mode: normal;
+      position: absolute;
+      top: 74.48%;
+      width: 100%;
+    }
+
+    .google-pixel-2-1 .vector-r4031F {
+      background-color: transparent;
+      height: 15.69%;
+      left: 0px;
+      mix-blend-mode: normal;
+      position: absolute;
+      top: 84.50%;
+      width: 100%;
+    }
+
+    .google-pixel-2-1 .vector-IXCCSn {
+      background-color: transparent;
+      height: 11.47%;
+      left: 0px;
+      mix-blend-mode: normal;
+      position: absolute;
+      top: 88.70%;
+      width: 100%;
+    }
+
+    .google-pixel-2-1 .education-work-experience-mo2Lst {
+      background-color: transparent;
+      height: auto;
+      left: calc(50.00% - 659px);
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      position: absolute;
+      text-align: center;
+      top: 2px;
+      width: 498px;
+    }
+
+    .google-pixel-2-1 .group-27-mo2Lst {
+      background-color: transparent;
+      height: 451px;
+      left: 4.93%;
+      position: absolute;
+      top: calc(50.00% - 168px);
+      width: 27.90%;
+    }
+
+    .google-pixel-2-1 .group-8-mo2Lst {
+      background-color: transparent;
+      height: 84px;
+      left: 18.57%;
+      position: absolute;
+      top: calc(50.00% - 134px);
+      width: 14.18%;
+    }
+
+    .google-pixel-2-1 .group-29-mo2Lst {
+      background-color: transparent;
+      height: 84px;
+      left: 4.93%;
+      position: absolute;
+      top: calc(50.00% - 10px);
+      width: 14.63%;
+    }
+
+    .google-pixel-2-1 .x2014-ZjxH2m {
+      background-color: transparent;
+      height: auto;
+      left: 0px;
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      position: absolute;
+      text-align: left;
+      top: calc(50.00% - 42px);
+      width: 39.35%;
+    }
+
+    .google-pixel-2-1 .don-bosco-high-school-pune-ZjxH2m {
+      background-color: transparent;
+      height: auto;
+      left: 0px;
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      position: absolute;
+      text-align: left;
+      top: calc(50.00% - 23px);
+      width: 97.93%;
+    }
+
+    .google-pixel-2-1 .secondary-education-ZjxH2m {
+      background-color: transparent;
+      height: auto;
+      left: 0px;
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      position: absolute;
+      text-align: left;
+      top: calc(50.00% + 20px);
+      width: 76.11%;
+    }
+
+    .google-pixel-2-1 .group-30-mo2Lst {
+      background-color: transparent;
+      height: 63px;
+      left: 4.93%;
+      position: absolute;
+      top: calc(50.00% + 158px);
+      width: 14.63%;
+    }
+
+    .google-pixel-2-1 .x2021-GEGsxO {
+      background-color: transparent;
+      height: auto;
+      left: 0px;
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      position: absolute;
+      text-align: left;
+      top: calc(50.00% - 32px);
+      width: 39.35%;
+    }
+
+    .google-pixel-2-1 .excite-systems-pvt-ltd-GEGsxO {
+      background-color: transparent;
+      height: auto;
+      left: 0px;
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      position: absolute;
+      text-align: left;
+      top: calc(50.00% - 13px);
+      width: 97.93%;
+    }
+
+    .google-pixel-2-1 .web-design-intern-GEGsxO {
+      background-color: transparent;
+      height: auto;
+      left: 0px;
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      position: absolute;
+      text-align: left;
+      top: calc(50.00% + 9px);
+      width: 76.11%;
+    }
+
+    .google-pixel-2-1 .group-28-mo2Lst {
+      background-color: transparent;
+      height: 97px;
+      left: 18.88%;
+      position: absolute;
+      top: calc(50.00% + 72px);
+      width: 14.63%;
+    }
+
+    .google-pixel-2-1 .x2019-XdwceI {
+      background-color: transparent;
+      height: auto;
+      left: 58.55%;
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      position: absolute;
+      text-align: right;
+      top: calc(50.00% - 48px);
+      width: 39.35%;
+    }
+
+    .google-pixel-2-1 .cusrow-wadia-in-technology-pune-XdwceI {
+      background-color: transparent;
+      height: auto;
+      left: 0px;
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      position: absolute;
+      text-align: right;
+      top: calc(50.00% - 30px);
+      width: 97.93%;
+    }
+
+    .google-pixel-2-1 .diploma-in-comp-ter-engineering-XdwceI {
+      background-color: transparent;
+      height: auto;
+      left: 20.21%;
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      position: absolute;
+      text-align: right;
+      top: calc(50.00% + 12px);
+      width: 76.17%;
+    }
+
+    .google-pixel-2-1 .section-4-1xqTZi {
+      background-color: transparent;
+      height: 484px;
+      left: 0px;
+      position: absolute;
+      top: calc(50.00% + 452px);
+      width: calc(100.00% + 2px);
+    }
+
+    .google-pixel-2-1 .layered-waves-haikei-4-xx9oE5 {
+      background-color: transparent;
+      height: 484px;
+      left: 0px;
+      mix-blend-mode: normal;
+      overflow: hidden;
+      position: absolute;
+      top: calc(50.00% - 242px);
+      width: calc(100.00% - 2px);
+    }
+
+    .google-pixel-2-1 .vector-1e1RK9 {
+      background-color: transparent;
+      height: 100%;
+      left: 0px;
+      mix-blend-mode: normal;
+      position: absolute;
+      top: 0px;
+      width: 100%;
+    }
+
+    .google-pixel-2-1 .vector-HXyb82 {
+      background-color: transparent;
+      height: 40.19%;
+      left: 0px;
+      mix-blend-mode: normal;
+      position: absolute;
+      top: 60.03%;
+      width: 100%;
+    }
+
+    .google-pixel-2-1 .vector-GlHyMf {
+      background-color: transparent;
+      height: 31.71%;
+      left: 0px;
+      mix-blend-mode: normal;
+      position: absolute;
+      top: 68.49%;
+      width: 100%;
+    }
+
+    .google-pixel-2-1 .vector-Y8rbF9 {
+      background-color: transparent;
+      height: 24.69%;
+      left: 0px;
+      mix-blend-mode: normal;
+      position: absolute;
+      top: 75.50%;
+      width: 100%;
+    }
+
+    .google-pixel-2-1 .vector-Cmknmb {
+      background-color: transparent;
+      height: 16.84%;
+      left: 0px;
+      mix-blend-mode: normal;
+      position: absolute;
+      top: 83.35%;
+      width: 100%;
+    }
+
+    .google-pixel-2-1 .tech-stack-ive-worked-with-xx9oE5 {
+      background-color: transparent;
+      height: auto;
+      left: calc(50.00% - 194px);
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      position: absolute;
+      text-align: center;
+      top: 40px;
+      width: 382px;
+    }
+
+    .google-pixel-2-1 .frame-9-xx9oE5 {
+      background-color: #162938;
+      border-radius: 25px;
+      height: 238px;
+      left: calc(50.00% - 151px);
+      mix-blend-mode: normal;
+      overflow: hidden;
+      position: absolute;
+      top: 172px;
+      width: 294px;
+    }
+
+    .google-pixel-2-1 .group-33-sTUnHt {
+      background-color: transparent;
+      height: 60px;
+      left: 19px;
+      position: absolute;
+      top: 9px;
+      width: 267px;
+    }
+
+    .google-pixel-2-1 .image-6-HOhkvb {
+      background-color: transparent;
+      height: 50px;
+      left: 0px;
+      mix-blend-mode: normal;
+      object-fit: cover;
+      position: absolute;
+      top: 5px;
+      width: 50px;
+    }
+
+    .google-pixel-2-1 .group-15-HOhkvb {
+      background-color: transparent;
+      height: 38px;
+      left: 63px;
+      position: absolute;
+      top: 11px;
+      width: 75px;
+    }
+
+    .google-pixel-2-1 .g3-DbCPrr {
+      background-color: transparent;
+      height: 38px;
+      left: 0px;
+      position: absolute;
+      top: 0px;
+      width: 64px;
+    }
+
+    .google-pixel-2-1 .path5-1f8Fs9 {
+      background-color: transparent;
+      height: 38px;
+      left: 24px;
+      mix-blend-mode: normal;
+      position: absolute;
+      top: 0px;
+      width: 40px;
+    }
+
+    .google-pixel-2-1 .path7-1f8Fs9 {
+      background-color: transparent;
+      height: 23px;
+      left: 0px;
+      mix-blend-mode: normal;
+      position: absolute;
+      top: 15px;
+      width: 23px;
+    }
+
+    .google-pixel-2-1 .g9-DbCPrr {
+      background-color: transparent;
+      height: 14px;
+      left: 31px;
+      position: absolute;
+      top: 17px;
+      width: 43px;
+    }
+
+    .google-pixel-2-1 .g11-wXvUuX {
+      background-color: transparent;
+      height: 14px;
+      left: 0px;
+      position: relative;
+      top: 0px;
+      width: 43px;
+    }
+
+    .google-pixel-2-1 .path13-FXOv4q {
+      background-color: transparent;
+      height: 14px;
+      left: 0px;
+      mix-blend-mode: normal;
+      position: absolute;
+      top: 0px;
+      width: 7px;
+    }
+
+    .google-pixel-2-1 .path15-FXOv4q {
+      background-color: transparent;
+      height: 9px;
+      left: 6px;
+      mix-blend-mode: normal;
+      position: absolute;
+      top: 5px;
+      width: 8px;
+    }
+
+    .google-pixel-2-1 .path17-FXOv4q {
+      background-color: transparent;
+      height: 9px;
+      left: 14px;
+      mix-blend-mode: normal;
+      position: absolute;
+      top: 5px;
+      width: 12px;
+    }
+
+    .google-pixel-2-1 .path19-FXOv4q {
+      background-color: transparent;
+      height: 9px;
+      left: 25px;
+      mix-blend-mode: normal;
+      position: absolute;
+      top: 5px;
+      width: 8px;
+    }
+
+    .google-pixel-2-1 .path21-FXOv4q {
+      background-color: transparent;
+      height: 9px;
+      left: 32px;
+      mix-blend-mode: normal;
+      position: absolute;
+      top: 5px;
+      width: 10px;
+    }
+
+    .google-pixel-2-1 .scikit-DbCPrr {
+      background-color: transparent;
+      color: var(--white);
+      font-family: var(--font-family-roboto);
+      font-size: 6.1px;
+      font-style: normal;
+      font-weight: 400;
+      height: auto;
+      left: 41px;
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      position: absolute;
+      text-align: left;
+      top: 13px;
+      width: 17px;
+    }
+
+    .google-pixel-2-1 .image-7-HOhkvb {
+      background-color: transparent;
+      height: 60px;
+      left: 149px;
+      mix-blend-mode: normal;
+      object-fit: cover;
+      position: absolute;
+      top: 0px;
+      width: 60px;
+    }
+
+    .google-pixel-2-1 .image-8-HOhkvb {
+      background-color: transparent;
+      height: 58px;
+      left: 222px;
+      mix-blend-mode: normal;
+      object-fit: cover;
+      position: absolute;
+      top: 1px;
+      width: 45px;
+    }
+
+    .google-pixel-2-1 .group-31-sTUnHt {
+      background-color: transparent;
+      height: 63px;
+      left: 19px;
+      position: absolute;
+      top: 89px;
+      width: 267px;
+    }
+
+    .google-pixel-2-1 .image-9-ydJr83 {
+      background-color: transparent;
+      height: 64px;
+      left: 0px;
+      mix-blend-mode: normal;
+      object-fit: cover;
+      position: absolute;
+      top: 0px;
+      width: 50px;
+    }
+
+    .google-pixel-2-1 .image-10-ydJr83 {
+      background-color: transparent;
+      height: 61px;
+      left: 77px;
+      mix-blend-mode: normal;
+      object-fit: cover;
+      position: absolute;
+      top: 0px;
+      width: 50px;
+    }
+
+    .google-pixel-2-1 .image-11-ydJr83 {
+      background-color: transparent;
+      height: 52px;
+      left: 155px;
+      mix-blend-mode: normal;
+      object-fit: cover;
+      position: absolute;
+      top: 6px;
+      width: 50px;
+    }
+
+    .google-pixel-2-1 .image-12-ydJr83 {
+      background-color: transparent;
+      height: 61px;
+      left: 217px;
+      mix-blend-mode: normal;
+      object-fit: cover;
+      position: absolute;
+      top: 0px;
+      width: 50px;
+    }
+
+    .google-pixel-2-1 .group-32-sTUnHt {
+      background-color: transparent;
+      height: 56px;
+      left: 19px;
+      position: absolute;
+      top: 162px;
+      width: 263px;
+    }
+
+    .google-pixel-2-1 .image-13-xvfGku {
+      background-color: transparent;
+      height: 50px;
+      left: 0px;
+      mix-blend-mode: normal;
+      object-fit: cover;
+      position: absolute;
+      top: 3px;
+      width: 50px;
+    }
+
+    .google-pixel-2-1 .image-14-xvfGku {
+      background-color: transparent;
+      height: 34px;
+      left: 74px;
+      mix-blend-mode: normal;
+      object-fit: cover;
+      position: absolute;
+      top: 11px;
+      width: 60px;
+    }
+
+    .google-pixel-2-1 .image-16-xvfGku {
+      background-color: transparent;
+      height: 50px;
+      left: 152px;
+      mix-blend-mode: normal;
+      object-fit: cover;
+      position: absolute;
+      top: 0px;
+      width: 48px;
+    }
+
+    .google-pixel-2-1 .image-17-xvfGku {
+      background-color: transparent;
+      height: 56px;
+      left: 217px;
+      mix-blend-mode: normal;
+      object-fit: cover;
+      position: absolute;
+      top: 0px;
+      width: 46px;
+    }
+
+    .google-pixel-2-1 .section-5-1xqTZi {
+      background-color: transparent;
+      height: 734px;
+      left: calc(50.00% - 171px);
+      position: absolute;
+      top: 3272px;
+      width: 343px;
+    }
+
+    .google-pixel-2-1 .group-18-ircyC5 {
+      background-color: transparent;
+      height: 275px;
+      left: 0px;
+      position: absolute;
+      top: calc(50.00% - 270px);
+      width: 99.42%;
+    }
+
+    .google-pixel-2-1 .rectangle-5-dhSMxt {
+      background-color: transparent;
+      height: 98px;
+      left: 50.62%;
+      mix-blend-mode: normal;
+      object-fit: cover;
+      position: absolute;
+      top: calc(50.00% - 138px);
+      width: 49.41%;
+    }
+
+    .google-pixel-2-1 .rectangle-9-dhSMxt {
+      background-color: transparent;
+      height: 172px;
+      left: 50.62%;
+      mix-blend-mode: normal;
+      object-fit: cover;
+      position: absolute;
+      top: calc(50.00% - 35px);
+      width: 49.41%;
+    }
+
+    .google-pixel-2-1 .rectangle-8-dhSMxt {
+      background-color: transparent;
+      height: 275px;
+      left: 0px;
+      mix-blend-mode: normal;
+      object-fit: cover;
+      position: absolute;
+      top: calc(50.00% - 138px);
+      width: 49.41%;
+    }
+
+    .google-pixel-2-1 .group-34-ircyC5 {
+      background-color: transparent;
+      height: 357px;
+      left: 0px;
+      position: absolute;
+      top: calc(50.00% + 10px);
+      width: 99.42%;
+    }
+
+    .google-pixel-2-1 .rectangle-10-q1QbQY {
+      background-color: transparent;
+      height: 107px;
+      left: 0px;
+      mix-blend-mode: normal;
+      object-fit: cover;
+      position: absolute;
+      top: calc(50.00% + 72px);
+      width: 49.12%;
+    }
+
+    .google-pixel-2-1 .rectangle-11-q1QbQY {
+      background-color: transparent;
+      height: 127px;
+      left: 50.89%;
+      mix-blend-mode: normal;
+      object-fit: cover;
+      position: absolute;
+      top: calc(50.00% - 179px);
+      width: 49.12%;
+    }
+
+    .google-pixel-2-1 .rectangle-6-q1QbQY {
+      background-color: transparent;
+      height: 244px;
+      left: 0px;
+      mix-blend-mode: normal;
+      object-fit: cover;
+      position: absolute;
+      top: calc(50.00% - 179px);
+      width: 49.12%;
+    }
+
+    .google-pixel-2-1 .rectangle-7-q1QbQY {
+      background-color: transparent;
+      height: 224px;
+      left: 50.89%;
+      mix-blend-mode: normal;
+      object-fit: cover;
+      position: absolute;
+      top: calc(50.00% - 45px);
+      width: 49.12%;
+    }
+
+    .google-pixel-2-1 .gallery-ircyC5 {
+      background-color: transparent;
+      height: auto;
+      left: calc(50.00% - 67px);
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      position: absolute;
+      text-align: center;
+      top: 1px;
+      width: 136px;
+    }
+
+    .google-pixel-2-1 .section-6-1xqTZi {
+      background-color: transparent;
+      height: 562px;
+      left: calc(50.00% - 198px);
+      position: absolute;
+      top: calc(50.00% + 1734px);
+      width: 397px;
+    }
+
+    .google-pixel-2-1 .layered-peaks-haikei-78CbrO {
+      background-color: transparent;
+      height: 395px;
+      left: calc(50.00% - 282px);
+      mix-blend-mode: normal;
+      overflow: hidden;
+      position: absolute;
+      top: calc(50.00% - 198px);
+      transform: rotate(-90deg);
+      width: 562px;
+    }
+
+    .google-pixel-2-1 .vector-OlBRst {
+      background-color: transparent;
+      height: 58.10%;
+      left: -14.75%;
+      mix-blend-mode: normal;
+      position: absolute;
+      top: 20.95%;
+      transform: rotate(90deg);
+      width: 70.28%;
+    }
+
+    .google-pixel-2-1 .vector-Bkwjg2 {
+      background-color: transparent;
+      height: 47.34%;
+      left: -18.54%;
+      mix-blend-mode: normal;
+      position: absolute;
+      top: 26.33%;
+      transform: rotate(90deg);
+      width: 70.28%;
+    }
+
+    .google-pixel-2-1 .vector-R3K4ZR {
+      background-color: transparent;
+      height: 38.73%;
+      left: -21.55%;
+      mix-blend-mode: normal;
+      position: absolute;
+      top: 30.63%;
+      transform: rotate(90deg);
+      width: 70.28%;
+    }
+
+    .google-pixel-2-1 .vector-xuRPR6 {
+      background-color: transparent;
+      height: 26.84%;
+      left: -25.73%;
+      mix-blend-mode: normal;
+      position: absolute;
+      top: 36.58%;
+      transform: rotate(90deg);
+      width: 70.28%;
+    }
+
+    .google-pixel-2-1 .vector-ae5XOZ {
+      background-color: transparent;
+      height: 15.57%;
+      left: -29.71%;
+      mix-blend-mode: normal;
+      position: absolute;
+      top: 42.22%;
+      transform: rotate(90deg);
+      width: 70.28%;
+    }
+
+    .google-pixel-2-1 .ping-me-78CbrO {
+      background-color: transparent;
+      height: 15.50%;
+      left: 0px;
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      position: absolute;
+      text-align: center;
+      top: 0.54%;
+      width: 96.07%;
+    }
+
+    .google-pixel-2-1 .group-12-78CbrO {
+      background-color: transparent;
+      height: 9.61%;
+      left: 9.82%;
+      position: absolute;
+      top: 14.41%;
+      width: 80.74%;
+    }
+
+    .google-pixel-2-1 .rectangle-3-Geceqa {
+      background-color: var(--pickled-bluewood);
+      border-radius: 25px;
+      height: 100%;
+      left: 0px;
+      mix-blend-mode: normal;
+      position: absolute;
+      top: 0px;
+      width: 99.38%;
+    }
+
+    .google-pixel-2-1 .name-Geceqa {
+      background-color: transparent;
+      border: 0;
+      height: 72.22%;
+      left: 4.68%;
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      padding: 0;
+      position: absolute;
+      resize: none;
+      text-align: left;
+      top: 14.81%;
+      width: 88.19%;
+    }
+
+    .google-pixel-2-1 .name-Geceqa::placeholder {
+      color: #e4e4e499;
+    }
+
+    .google-pixel-2-1 .group-13-78CbrO {
+      background-color: transparent;
+      height: 11.50%;
+      left: 9.82%;
+      position: absolute;
+      top: 26.69%;
+      width: 80.82%;
+    }
+
+    .google-pixel-2-1 .rectangle-3-j6pnyi {
+      background-color: var(--pickled-bluewood);
+      border-radius: 25px;
+      height: 100%;
+      left: 0px;
+      mix-blend-mode: normal;
+      position: absolute;
+      top: 0px;
+      width: 99.38%;
+    }
+
+    .google-pixel-2-1 .email-id-j6pnyi {
+      background-color: transparent;
+      border: 0;
+      height: 71.18%;
+      left: 4.76%;
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      padding: 0;
+      position: absolute;
+      resize: none;
+      text-align: left;
+      top: 13.93%;
+      width: 88.12%;
+    }
+
+    .google-pixel-2-1 .email-id-j6pnyi::placeholder {
+      color: #e4e4e499;
+    }
+
+    .google-pixel-2-1 .group-14-78CbrO {
+      background-color: transparent;
+      height: 21.17%;
+      left: 9.82%;
+      position: absolute;
+      top: 40.93%;
+      width: 81.45%;
+    }
+
+    .google-pixel-2-1 .rectangle-4-0ddDHG {
+      background-color: var(--pickled-bluewood);
+      border-radius: 25px;
+      height: 100%;
+      left: 0px;
+      mix-blend-mode: normal;
+      position: absolute;
+      top: 0px;
+      width: 99.38%;
+    }
+
+    .google-pixel-2-1 .email-id-0ddDHG {
+      background-color: transparent;
+      border: 0;
+      height: 76.47%;
+      left: 4.73%;
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      padding: 0;
+      position: absolute;
+      resize: none;
+      text-align: left;
+      top: 6.72%;
+      width: 87.42%;
+    }
+
+    .google-pixel-2-1 .email-id-0ddDHG::placeholder {
+      color: #e4e4e499;
+    }
+
+    .google-pixel-2-1 .group-38-78CbrO {
+      background-color: transparent;
+      height: 8.01%;
+      left: 29.94%;
+      position: absolute;
+      top: 64.77%;
+      width: 36.34%;
+    }
+
+    .google-pixel-2-1 .rectangle-3-cOVx9s {
+      background-color: #0066ff;
+      border-radius: 25px;
+      height: 100%;
+      left: 0px;
+      mix-blend-mode: normal;
+      position: absolute;
+      top: 0px;
+      width: 98.61%;
+    }
+
+    .google-pixel-2-1 .submit-cOVx9s {
+      background-color: transparent;
+      color: var(--white);
+      cursor: pointer;
+      font-family: var(--font-family-poppins);
+      font-size: 17px;
+      font-style: normal;
+      font-weight: 600;
+      height: 71.21%;
+      left: 16.96%;
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      position: absolute;
+      text-align: center;
+      top: 16.62%;
+      width: 63.36%;
+    }
+
+    /* screen - imac-1 */
+
+    .imac-1 {
+      background-color: #001220;
+      height: 100vh;
+      margin: 0px;
+      min-height: 4649px;
+      min-width: 1366px;
+      mix-blend-mode: normal;
+      overflow: hidden;
+      overflow-x: hidden;
+      position: relative;
+      width: 100%;
+    }
+
+    .imac-1 .section-1-DDrdaV {
+      background-color: transparent;
+      height: 700px;
+      left: 0px;
+      position: absolute;
+      top: calc(50.00% - 2328px);
+      width: calc(100.00% + 4px);
+    }
+
+    .imac-1 .layered-waves-haikei-4-2HyJ5T {
+      background-color: transparent;
+      display: block;
+      height: 740px;
+      left: 0px;
+      mix-blend-mode: normal;
+      position: absolute;
+      top: calc(50.00% - 370px);
+      width: calc(100.00% - 4px);
+      opacity: 0;
+      transform: translate(0, 25px);
+    }
+
+    .imac-1 .layered-waves-haikei-4-2HyJ5T.bp1-animate-enter {
+      animation: bp1-animate-enter-frames 0.20s ease-in-out 0.00s 1 normal forwards;
+      display: block;
+      opacity: 0;
+      transform: translate(0, 25px);
+    }
+
+    @keyframes bp1-animate-enter-frames {
+      from {
+        opacity: 0;
+        transform: translate(0, 25px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translate(0, 0);
+      }
+    }
+
+    .imac-1 .hey-im-avdhut-kamble-2HyJ5T {
+      background-color: transparent;
+      color: var(--white);
+      display: block;
+      font-family: var(--font-family-poppins);
+      font-size: 55px;
+      font-style: normal;
+      font-weight: 600;
+      height: auto;
+      left: 67px;
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      position: absolute;
+      text-align: left;
+      top: 118px;
+      width: 461px;
+      opacity: 0;
+      transform: translate(0, 25px);
+    }
+
+    .imac-1 .hey-im-avdhut-kamble-2HyJ5T.bp1-animate-enter1 {
+      animation: bp1-animate-enter1-frames 0.50s ease-in-out 0.00s 1 normal forwards;
+      display: block;
+      opacity: 0;
+      transform: translate(0, 25px);
+    }
+
+    @keyframes bp1-animate-enter1-frames {
+      from {
+        opacity: 0;
+        transform: translate(0, 25px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translate(0, 0);
+      }
+    }
+
+    .imac-1 .group-1-2HyJ5T {
+      background-color: transparent;
+      display: block;
+      height: 32px;
+      left: 67px;
+      position: absolute;
+      top: 581px;
+      width: 244px;
+      opacity: 0;
+      transform: translate(0, 25px);
+    }
+
+    .imac-1 .group-1-2HyJ5T.bp1-animate-enter2 {
+      animation: bp1-animate-enter2-frames 1.00s ease-in-out 0.00s 1 normal forwards;
+      display: block;
+      opacity: 0;
+      transform: translate(0, 25px);
+    }
+
+    @keyframes bp1-animate-enter2-frames {
+      from {
+        opacity: 0;
+        transform: translate(0, 25px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translate(0, 0);
+      }
+    }
+
+    .imac-1 .image-1-xW5cFY {
+      background-color: transparent;
+      height: 32px;
+      left: 0px;
+      mix-blend-mode: normal;
+      object-fit: cover;
+      position: absolute;
+      top: 0px;
+      width: 32px;
+    }
+
+    .imac-1 .image-2-xW5cFY {
+      background-color: transparent;
+      height: 32px;
+      left: 53px;
+      mix-blend-mode: normal;
+      object-fit: cover;
+      position: absolute;
+      top: 0px;
+      width: 32px;
+    }
+
+    .imac-1 .image-3-xW5cFY {
+      background-color: transparent;
+      height: 32px;
+      left: 106px;
+      mix-blend-mode: normal;
+      object-fit: cover;
+      position: absolute;
+      top: 0px;
+      width: 32px;
+    }
+
+    .imac-1 .image-4-xW5cFY {
+      background-color: transparent;
+      height: 32px;
+      left: 159px;
+      mix-blend-mode: normal;
+      object-fit: cover;
+      position: absolute;
+      top: 0px;
+      width: 32px;
+    }
+
+    .imac-1 .image-5-xW5cFY {
+      background-color: transparent;
+      height: 32px;
+      left: 212px;
+      mix-blend-mode: normal;
+      object-fit: cover;
+      position: absolute;
+      top: 0px;
+      width: 32px;
+    }
+
+    .imac-1 .image-18-2HyJ5T {
+      background-color: transparent;
+      display: block;
+      height: 463px;
+      mix-blend-mode: normal;
+      object-fit: cover;
+      position: absolute;
+      right: 162px;
+      top: 124px;
+      width: 376px;
+      opacity: 0;
+      transform: translate(0, 25px);
+    }
+
+    .imac-1 .image-18-2HyJ5T.bp1-animate-enter3 {
+      animation: bp1-animate-enter3-frames 0.50s ease-in-out 0.00s 1 normal forwards;
+      display: block;
+      opacity: 0;
+      transform: translate(0, 25px);
+    }
+
+    @keyframes bp1-animate-enter3-frames {
+      from {
+        opacity: 0;
+        transform: translate(0, 25px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translate(0, 0);
+      }
+    }
+
+    .imac-1 .let-me-tell-you-games-and-music-2HyJ5T {
+      background-color: transparent;
+      color: var(--white);
+      display: block;
+      font-family: var(--font-family-space_mono);
+      font-size: var(--font-size-xl);
+      font-style: normal;
+      font-weight: 400;
+      height: auto;
+      left: 67px;
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      position: absolute;
+      text-align: left;
+      top: 302px;
+      width: 544px;
+      opacity: 0;
+      transform: translate(0, 25px);
+    }
+
+    .imac-1 .let-me-tell-you-games-and-music-2HyJ5T.bp1-animate-enter4 {
+      animation: bp1-animate-enter4-frames 0.50s ease-in-out 0.00s 1 normal forwards;
+      display: block;
+      opacity: 0;
+      transform: translate(0, 25px);
+    }
+
+    @keyframes bp1-animate-enter4-frames {
+      from {
+        opacity: 0;
+        transform: translate(0, 25px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translate(0, 0);
+      }
+    }
+
+    .imac-1 .layered-waves-haikei-16-1-DDrdaV {
+      background-color: transparent;
+      height: 1152px;
+      left: 0px;
+      mix-blend-mode: normal;
+      overflow: hidden;
+      position: absolute;
+      top: calc(50.00% - 1628px);
+      width: 100%;
+    }
+
+    .imac-1 .vector-AAtJcN {
+      background-color: transparent;
+      height: 100%;
+      left: 0px;
+      mix-blend-mode: normal;
+      position: absolute;
+      top: 0px;
+      width: 100%;
+    }
+
+    .imac-1 .vector-NFLgL1 {
+      background-color: transparent;
+      height: 32.12%;
+      left: 0px;
+      mix-blend-mode: normal;
+      position: absolute;
+      top: 67.97%;
+      width: 100%;
+    }
+
+    .imac-1 .vector-1m0tPx {
+      background-color: transparent;
+      height: 28.73%;
+      left: 0px;
+      mix-blend-mode: normal;
+      position: absolute;
+      top: 71.35%;
+      width: 100%;
+    }
+
+    .imac-1 .vector-BBm44F {
+      background-color: transparent;
+      height: 22.92%;
+      left: 0px;
+      mix-blend-mode: normal;
+      position: absolute;
+      top: 77.19%;
+      width: 100%;
+    }
+
+    .imac-1 .vector-KD5H6P {
+      background-color: transparent;
+      height: 18.40%;
+      left: 0px;
+      mix-blend-mode: normal;
+      position: absolute;
+      top: 81.71%;
+      width: 100%;
+    }
+
+    .imac-1 .vector-szd6AE {
+      background-color: transparent;
+      height: 16.41%;
+      left: 0px;
+      mix-blend-mode: normal;
+      position: absolute;
+      top: 83.68%;
+      width: 100%;
+    }
+
+    .imac-1 .vector-Jhktk7 {
+      background-color: transparent;
+      height: 10.85%;
+      left: 0px;
+      mix-blend-mode: normal;
+      position: absolute;
+      top: 89.25%;
+      width: 100%;
+    }
+
+    .imac-1 .vector-SofsqV {
+      background-color: transparent;
+      height: 6.68%;
+      left: 0px;
+      mix-blend-mode: normal;
+      position: absolute;
+      top: 93.43%;
+      width: 100%;
+    }
+
+    .imac-1 .section-2-DDrdaV {
+      background-color: transparent;
+      height: 1052px;
+      left: calc(50.00% - 480px);
+      position: absolute;
+      top: 739px;
+      width: 957px;
+    }
+
+    .imac-1 .projects-GYSGjX {
+      background-color: transparent;
+      height: auto;
+      left: calc(50.00% - 152px);
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      position: absolute;
+      text-align: center;
+      top: 1px;
+      width: 301px;
+    }
+
+    .imac-1 .group-37-GYSGjX {
+      background-color: transparent;
+      height: 892px;
+      left: calc(50.00% - 479px);
+      position: absolute;
+      top: 160px;
+      width: 955px;
+    }
+
+    .imac-1 .group-16-GAz2Lo {
+      background-color: transparent;
+      display: block;
+      height: 273px;
+      left: 551px;
+      position: absolute;
+      top: 0px;
+      width: 404px;
+      opacity: 0;
+      transform: translate(0, 25px);
+    }
+
+    .imac-1 .group-16-GAz2Lo.bp1-animate-enter5 {
+      animation: bp1-animate-enter5-frames 0.50s ease-in-out 0.00s 1 normal forwards;
+      display: block;
+      opacity: 0;
+      transform: translate(0, 25px);
+    }
+
+    @keyframes bp1-animate-enter5-frames {
+      from {
+        opacity: 0;
+        transform: translate(0, 25px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translate(0, 0);
+      }
+    }
+
+    .imac-1 .group-10-9OTaKp {
+      background-color: transparent;
+      height: 273px;
+      left: calc(50.00% - 202px);
+      position: relative;
+      top: 0px;
+      width: 410px;
+    }
+
+    .imac-1 .rectangle-1-xmBE58 {
+      background-color: var(--mirage);
+      border-radius: 25px;
+      height: 273px;
+      left: calc(50.00% - 205px);
+      mix-blend-mode: normal;
+      position: absolute;
+      top: 0px;
+      width: 404px;
+    }
+
+    .imac-1 .august-26th-2020-xmBE58 {
+      background-color: transparent;
+      height: auto;
+      left: calc(50.00% + 59px);
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      position: absolute;
+      text-align: left;
+      top: 68px;
+      width: 128px;
+    }
+
+    .imac-1 .automate-birthday-emails-xmBE58 {
+      background-color: transparent;
+      height: auto;
+      left: calc(50.00% - 182px);
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      position: absolute;
+      text-align: left;
+      top: 19px;
+      width: 253px;
+    }
+
+    .imac-1 .image-1-xmBE58 {
+      background-color: transparent;
+      height: 25px;
+      left: calc(50.00% + 159px);
+      mix-blend-mode: normal;
+      object-fit: cover;
+      position: absolute;
+      top: 232px;
+      width: 26px;
+    }
+
+    .imac-1 .automate-birthd-n-various-means-xmBE58 {
+      background-color: transparent;
+      height: auto;
+      left: calc(50.00% - 182px);
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      position: absolute;
+      text-align: left;
+      top: 102px;
+      width: 344px;
+    }
+
+    .imac-1 .group-17-GAz2Lo {
+      background-color: transparent;
+      display: block;
+      height: 273px;
+      left: 2px;
+      position: absolute;
+      top: 308px;
+      width: 953px;
+      opacity: 0;
+      transform: translate(0, 25px);
+    }
+
+    .imac-1 .group-17-GAz2Lo.bp1-animate-enter6 {
+      animation: bp1-animate-enter6-frames 0.50s ease-in-out 0.00s 1 normal forwards;
+      display: block;
+      opacity: 0;
+      transform: translate(0, 25px);
+    }
+
+    @keyframes bp1-animate-enter6-frames {
+      from {
+        opacity: 0;
+        transform: translate(0, 25px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translate(0, 0);
+      }
+    }
+
+    .imac-1 .group-2-Phpy9o {
+      background-color: transparent;
+      height: 273px;
+      left: calc(50.00% - 477px);
+      position: absolute;
+      top: 0px;
+      width: 410px;
+    }
+
+    .imac-1 .rectangle-1-Kbzttd {
+      background-color: var(--mirage);
+      border-radius: 25px;
+      height: 273px;
+      left: calc(50.00% - 205px);
+      mix-blend-mode: normal;
+      position: absolute;
+      top: 0px;
+      width: 404px;
+    }
+
+    .imac-1 .automate-birthday-emails-Kbzttd {
+      background-color: transparent;
+      height: auto;
+      left: calc(50.00% - 182px);
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      position: absolute;
+      text-align: left;
+      top: 19px;
+      width: 253px;
+    }
+
+    .imac-1 .image-1-Kbzttd {
+      background-color: transparent;
+      height: 25px;
+      left: calc(50.00% + 159px);
+      mix-blend-mode: normal;
+      object-fit: cover;
+      position: absolute;
+      top: 232px;
+      width: 26px;
+    }
+
+    .imac-1 .automate-birthd-n-various-means-Kbzttd {
+      background-color: transparent;
+      height: auto;
+      left: calc(50.00% - 182px);
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      position: absolute;
+      text-align: left;
+      top: 102px;
+      width: 344px;
+    }
+
+    .imac-1 .august-26th-2020-Kbzttd {
+      background-color: transparent;
+      height: auto;
+      left: calc(50.00% + 59px);
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      position: absolute;
+      text-align: left;
+      top: 68px;
+      width: 127px;
+    }
+
+    .imac-1 .group-10-Phpy9o {
+      background-color: transparent;
+      height: 273px;
+      left: calc(50.00% + 73px);
+      position: absolute;
+      top: 0px;
+      width: 410px;
+    }
+
+    .imac-1 .rectangle-1-xqGbtj {
+      background-color: var(--mirage);
+      border-radius: 25px;
+      height: 273px;
+      left: calc(50.00% - 205px);
+      mix-blend-mode: normal;
+      position: absolute;
+      top: 0px;
+      width: 404px;
+    }
+
+    .imac-1 .august-26th-2020-xqGbtj {
+      background-color: transparent;
+      height: auto;
+      left: calc(50.00% + 59px);
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      position: absolute;
+      text-align: left;
+      top: 68px;
+      width: 128px;
+    }
+
+    .imac-1 .automate-birthday-emails-xqGbtj {
+      background-color: transparent;
+      height: auto;
+      left: calc(50.00% - 182px);
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      position: absolute;
+      text-align: left;
+      top: 19px;
+      width: 253px;
+    }
+
+    .imac-1 .image-1-xqGbtj {
+      background-color: transparent;
+      height: 25px;
+      left: calc(50.00% + 159px);
+      mix-blend-mode: normal;
+      object-fit: cover;
+      position: absolute;
+      top: 232px;
+      width: 26px;
+    }
+
+    .imac-1 .automate-birthd-n-various-means-xqGbtj {
+      background-color: transparent;
+      height: auto;
+      left: calc(50.00% - 182px);
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      position: absolute;
+      text-align: left;
+      top: 102px;
+      width: 344px;
+    }
+
+    .imac-1 .frame-16-GAz2Lo {
+      background-color: transparent;
+      height: 273px;
+      left: calc(50.00% - 476px);
+      position: absolute;
+      top: 619px;
+      width: 953px;
+    }
+
+    .imac-1 .group-2-lEqicV {
+      background-color: transparent;
+      height: 273px;
+      left: calc(50.00% - 477px);
+      position: absolute;
+      top: 0px;
+      width: 410px;
+    }
+
+    .imac-1 .rectangle-1-OiBOQa {
+      background-color: var(--mirage);
+      border-radius: 25px;
+      height: 273px;
+      left: calc(50.00% - 205px);
+      mix-blend-mode: normal;
+      position: absolute;
+      top: 0px;
+      width: 404px;
+    }
+
+    .imac-1 .automate-birthday-emails-OiBOQa {
+      background-color: transparent;
+      height: auto;
+      left: calc(50.00% - 182px);
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      position: absolute;
+      text-align: left;
+      top: 19px;
+      width: 253px;
+    }
+
+    .imac-1 .image-1-OiBOQa {
+      background-color: transparent;
+      height: 25px;
+      left: calc(50.00% + 159px);
+      mix-blend-mode: normal;
+      object-fit: cover;
+      position: absolute;
+      top: 232px;
+      width: 26px;
+    }
+
+    .imac-1 .automate-birthd-n-various-means-OiBOQa {
+      background-color: transparent;
+      height: auto;
+      left: calc(50.00% - 182px);
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      position: absolute;
+      text-align: left;
+      top: 102px;
+      width: 344px;
+    }
+
+    .imac-1 .august-26th-2020-OiBOQa {
+      background-color: transparent;
+      height: auto;
+      left: calc(50.00% + 59px);
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      position: absolute;
+      text-align: left;
+      top: 68px;
+      width: 127px;
+    }
+
+    .imac-1 .group-10-lEqicV {
+      background-color: transparent;
+      height: 273px;
+      left: calc(50.00% + 73px);
+      position: absolute;
+      top: 0px;
+      width: 410px;
+    }
+
+    .imac-1 .rectangle-1-ooRhOA {
+      background-color: var(--mirage);
+      border-radius: 25px;
+      height: 273px;
+      left: calc(50.00% - 205px);
+      mix-blend-mode: normal;
+      position: absolute;
+      top: 0px;
+      width: 404px;
+    }
+
+    .imac-1 .august-26th-2020-ooRhOA {
+      background-color: transparent;
+      height: auto;
+      left: calc(50.00% + 59px);
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      position: absolute;
+      text-align: left;
+      top: 68px;
+      width: 127px;
+    }
+
+    .imac-1 .automate-birthday-emails-ooRhOA {
+      background-color: transparent;
+      height: auto;
+      left: calc(50.00% - 182px);
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      position: absolute;
+      text-align: left;
+      top: 19px;
+      width: 253px;
+    }
+
+    .imac-1 .image-1-ooRhOA {
+      background-color: transparent;
+      height: 25px;
+      left: calc(50.00% + 159px);
+      mix-blend-mode: normal;
+      object-fit: cover;
+      position: absolute;
+      top: 232px;
+      width: 26px;
+    }
+
+    .imac-1 .automate-birthd-n-various-means-ooRhOA {
+      background-color: transparent;
+      height: auto;
+      left: calc(50.00% - 182px);
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      position: absolute;
+      text-align: left;
+      top: 102px;
+      width: 344px;
+    }
+
+    .imac-1 .group-2-GAz2Lo {
+      background-color: transparent;
+      display: block;
+      height: 273px;
+      left: calc(50.00% - 478px);
+      position: absolute;
+      top: 0px;
+      width: 405px;
+      opacity: 0;
+      transform: translate(0, 25px);
+    }
+
+    .imac-1 .group-2-GAz2Lo.bp1-animate-enter7 {
+      animation: bp1-animate-enter7-frames 0.50s ease-in-out 0.00s 1 normal forwards;
+      display: block;
+      opacity: 0;
+      transform: translate(0, 25px);
+    }
+
+    @keyframes bp1-animate-enter7-frames {
+      from {
+        opacity: 0;
+        transform: translate(0, 25px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translate(0, 0);
+      }
+    }
+
+    .imac-1 .section3-DDrdaV {
+      background-color: transparent;
+      height: 841px;
+      left: 0px;
+      position: absolute;
+      top: calc(50.00% - 398px);
+      width: calc(100.00% + 1px);
+    }
+
+    .imac-1 .layered-waves-haikei-3-s7pSsR {
+      background-color: transparent;
+      height: 534px;
+      left: -4px;
+      mix-blend-mode: normal;
+      position: absolute;
+      top: calc(50.00% - 95px);
+      width: calc(100.00% + 6px);
+    }
+
+    .imac-1 .education-work-experience-s7pSsR {
+      background-color: transparent;
+      display: block;
+      height: auto;
+      left: calc(50.00% - 259px);
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      position: absolute;
+      text-align: center;
+      top: 2px;
+      width: 494px;
+      opacity: 0;
+      transform: translate(0, 25px);
+    }
+
+    .imac-1 .education-work-experience-s7pSsR.bp1-animate-enter8 {
+      animation: bp1-animate-enter8-frames 0.50s ease-in-out 0.00s 1 normal forwards;
+      display: block;
+      opacity: 0;
+      transform: translate(0, 25px);
+    }
+
+    @keyframes bp1-animate-enter8-frames {
+      from {
+        opacity: 0;
+        transform: translate(0, 25px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translate(0, 0);
+      }
+    }
+
+    .imac-1 .group-8-s7pSsR {
+      background-color: transparent;
+      display: block;
+      height: 111px;
+      left: calc(50.00% + 310px);
+      position: absolute;
+      top: 212px;
+      width: 245px;
+      opacity: 0;
+      transform: translate(0, 25px);
+    }
+
+    .imac-1 .group-8-s7pSsR.bp1-animate-enter9 {
+      animation: bp1-animate-enter9-frames 0.50s ease-in-out 0.00s 1 normal forwards;
+      display: block;
+      opacity: 0;
+      transform: translate(0, 25px);
+    }
+
+    @keyframes bp1-animate-enter9-frames {
+      from {
+        opacity: 0;
+        transform: translate(0, 25px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translate(0, 0);
+      }
+    }
+
+    .imac-1 .x2009-hARSXC {
+      background-color: transparent;
+      height: auto;
+      left: calc(50.00% - 119px);
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      position: absolute;
+      text-align: left;
+      top: 0px;
+      width: 75px;
+    }
+
+    .imac-1 .don-bosco-high-school-pune-hARSXC {
+      background-color: transparent;
+      height: auto;
+      left: calc(50.00% - 122px);
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      position: absolute;
+      text-align: left;
+      top: 29px;
+      width: 241px;
+    }
+
+    .imac-1 .primary-education-hARSXC {
+      background-color: transparent;
+      height: auto;
+      left: calc(50.00% - 121px);
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      position: absolute;
+      text-align: left;
+      top: 89px;
+      width: 146px;
+    }
+
+    .imac-1 .group-27-s7pSsR {
+      background-color: transparent;
+      display: block;
+      height: 640px;
+      left: calc(50.00% - 346px);
+      position: absolute;
+      top: 181px;
+      width: 656px;
+      opacity: 0;
+      transform: translate(0, 25px);
+    }
+
+    .imac-1 .group-27-s7pSsR.bp1-animate-enter10 {
+      animation: bp1-animate-enter10-frames 0.50s ease-in-out 0.00s 1 normal forwards;
+      display: block;
+      opacity: 0;
+      transform: translate(0, 25px);
+    }
+
+    @keyframes bp1-animate-enter10-frames {
+      from {
+        opacity: 0;
+        transform: translate(0, 25px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translate(0, 0);
+      }
+    }
+
+    .imac-1 .group-26-s7pSsR {
+      background-color: transparent;
+      display: block;
+      height: 112px;
+      left: calc(50.00% - 596px);
+      position: absolute;
+      top: 393px;
+      width: 245px;
+      opacity: 0;
+      transform: translate(0, 25px);
+    }
+
+    .imac-1 .group-26-s7pSsR.bp1-animate-enter11 {
+      animation: bp1-animate-enter11-frames 0.50s ease-in-out 0.00s 1 normal forwards;
+      display: block;
+      opacity: 0;
+      transform: translate(0, 25px);
+    }
+
+    @keyframes bp1-animate-enter11-frames {
+      from {
+        opacity: 0;
+        transform: translate(0, 25px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translate(0, 0);
+      }
+    }
+
+    .imac-1 .x2009-JpZxV7 {
+      background-color: transparent;
+      height: auto;
+      left: calc(50.00% + 43px);
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      position: absolute;
+      text-align: right;
+      top: 0px;
+      width: 75px;
+    }
+
+    .imac-1 .don-bosco-high-school-pune-JpZxV7 {
+      background-color: transparent;
+      height: auto;
+      left: calc(50.00% - 122px);
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      position: absolute;
+      text-align: right;
+      top: 28px;
+      width: 241px;
+    }
+
+    .imac-1 .primary-education-JpZxV7 {
+      background-color: transparent;
+      height: auto;
+      left: calc(50.00% - 27px);
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      position: absolute;
+      text-align: right;
+      top: 90px;
+      width: 146px;
+    }
+
+    .imac-1 .group-25-s7pSsR {
+      background-color: transparent;
+      display: block;
+      height: 112px;
+      left: calc(50.00% - 596px);
+      position: absolute;
+      top: 634px;
+      width: 245px;
+      opacity: 0;
+      transform: translate(0, 25px);
+    }
+
+    .imac-1 .group-25-s7pSsR.bp1-animate-enter12 {
+      animation: bp1-animate-enter12-frames 0.50s ease-in-out 0.00s 1 normal forwards;
+      display: block;
+      opacity: 0;
+      transform: translate(0, 25px);
+    }
+
+    @keyframes bp1-animate-enter12-frames {
+      from {
+        opacity: 0;
+        transform: translate(0, 25px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translate(0, 0);
+      }
+    }
+
+    .imac-1 .x2009-faD0Fw {
+      background-color: transparent;
+      height: auto;
+      left: calc(50.00% + 43px);
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      position: absolute;
+      text-align: right;
+      top: 0px;
+      width: 75px;
+    }
+
+    .imac-1 .don-bosco-high-school-pune-faD0Fw {
+      background-color: transparent;
+      height: auto;
+      left: calc(50.00% - 122px);
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      position: absolute;
+      text-align: right;
+      top: 28px;
+      width: 241px;
+    }
+
+    .imac-1 .primary-education-faD0Fw {
+      background-color: transparent;
+      height: auto;
+      left: calc(50.00% - 27px);
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      position: absolute;
+      text-align: right;
+      top: 90px;
+      width: 146px;
+    }
+
+    .imac-1 .group-24-s7pSsR {
+      background-color: transparent;
+      display: block;
+      height: 110px;
+      left: calc(50.00% + 310px);
+      position: absolute;
+      top: 513px;
+      width: 245px;
+      opacity: 0;
+      transform: translate(0, 25px);
+    }
+
+    .imac-1 .group-24-s7pSsR.bp1-animate-enter13 {
+      animation: bp1-animate-enter13-frames 0.50s ease-in-out 0.00s 1 normal forwards;
+      display: block;
+      opacity: 0;
+      transform: translate(0, 25px);
+    }
+
+    @keyframes bp1-animate-enter13-frames {
+      from {
+        opacity: 0;
+        transform: translate(0, 25px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translate(0, 0);
+      }
+    }
+
+    .imac-1 .x2009-F3NyTM {
+      background-color: transparent;
+      height: auto;
+      left: calc(50.00% - 121px);
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      position: absolute;
+      text-align: left;
+      top: 0px;
+      width: 75px;
+    }
+
+    .imac-1 .don-bosco-high-school-pune-F3NyTM {
+      background-color: transparent;
+      height: auto;
+      left: calc(50.00% - 122px);
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      position: absolute;
+      text-align: left;
+      top: 28px;
+      width: 241px;
+    }
+
+    .imac-1 .primary-education-F3NyTM {
+      background-color: transparent;
+      height: auto;
+      left: calc(50.00% - 121px);
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      position: absolute;
+      text-align: left;
+      top: 87px;
+      width: 146px;
+    }
+
+    .imac-1 .section-4-DDrdaV {
+      background-color: transparent;
+      height: 402px;
+      left: 1px;
+      position: absolute;
+      top: calc(50.00% + 434px);
+      width: calc(100.00% + 2px);
+    }
+
+    .imac-1 .layered-waves-haikei-4-zOTQeH {
+      background-color: transparent;
+      height: 402px;
+      left: 0px;
+      mix-blend-mode: normal;
+      overflow: hidden;
+      position: absolute;
+      top: calc(50.00% - 201px);
+      width: calc(100.00% - 2px);
+    }
+
+    .imac-1 .vector-9E4Lq2 {
+      background-color: transparent;
+      height: 100%;
+      left: 0px;
+      mix-blend-mode: normal;
+      position: absolute;
+      top: 0px;
+      width: 100%;
+    }
+
+    .imac-1 .vector-bJwrL0 {
+      background-color: transparent;
+      height: 40.30%;
+      left: 0px;
+      mix-blend-mode: normal;
+      position: absolute;
+      top: 59.97%;
+      width: 100%;
+    }
+
+    .imac-1 .vector-df9F8M {
+      background-color: transparent;
+      height: 31.84%;
+      left: 0px;
+      mix-blend-mode: normal;
+      position: absolute;
+      top: 68.42%;
+      width: 100%;
+    }
+
+    .imac-1 .vector-N8DhjP {
+      background-color: transparent;
+      height: 24.88%;
+      left: 0px;
+      mix-blend-mode: normal;
+      position: absolute;
+      top: 75.41%;
+      width: 100%;
+    }
+
+    .imac-1 .vector-xchKNb {
+      background-color: transparent;
+      height: 16.92%;
+      left: 0px;
+      mix-blend-mode: normal;
+      position: absolute;
+      top: 83.31%;
+      width: 100%;
+    }
+
+    .imac-1 .tech-stack-ive-worked-with-zOTQeH {
+      background-color: transparent;
+      height: auto;
+      left: calc(50.00% - 202px);
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      position: absolute;
+      text-align: center;
+      top: 62px;
+      width: 403px;
+    }
+
+    .imac-1 .group-9-zOTQeH {
+      background-color: transparent;
+      height: 100px;
+      left: calc(50.00% - 498px);
+      position: absolute;
+      top: 267px;
+      width: 983px;
+    }
+
+    .imac-1 .rectangle-2-I5VOZV {
+      background-color: transparent;
+      height: 100px;
+      left: calc(50.00% - 492px);
+      mix-blend-mode: normal;
+      position: absolute;
+      top: 0px;
+      width: 983px;
+    }
+
+    .imac-1 .group-15-I5VOZV {
+      background-color: transparent;
+      height: 39px;
+      left: calc(50.00% - 378px);
+      pointer-events: auto;
+      position: absolute;
+      top: 31px;
+      transition: all 0.2s ease;
+      width: 75px;
+    }
+
+    .imac-1 .group-15-I5VOZV:hover {
+      transform: translate(0, -5px);
+    }
+
+    .imac-1 .image-6-I5VOZV {
+      background-color: transparent;
+      height: 50px;
+      left: calc(50.00% - 457px);
+      mix-blend-mode: normal;
+      object-fit: cover;
+      pointer-events: auto;
+      position: absolute;
+      top: 25px;
+      transition: all 0.2s ease;
+      width: 52px;
+    }
+
+    .imac-1 .image-6-I5VOZV:hover {
+      transform: translate(0, -5px);
+    }
+
+    .imac-1 .image-7-I5VOZV {
+      background-color: transparent;
+      height: 60px;
+      left: calc(50.00% - 281px);
+      mix-blend-mode: normal;
+      object-fit: cover;
+      pointer-events: auto;
+      position: absolute;
+      top: 20px;
+      transition: all 0.2s ease;
+      width: 62px;
+    }
+
+    .imac-1 .image-7-I5VOZV:hover {
+      transform: translate(0, -5px);
+    }
+
+    .imac-1 .image-8-I5VOZV {
+      background-color: transparent;
+      height: 58px;
+      left: calc(50.00% - 194px);
+      mix-blend-mode: normal;
+      object-fit: cover;
+      pointer-events: auto;
+      position: absolute;
+      top: 19px;
+      transition: all 0.2s ease;
+      width: 47px;
+    }
+
+    .imac-1 .image-8-I5VOZV:hover {
+      transform: translate(0, -5px);
+    }
+
+    .imac-1 .image-9-I5VOZV {
+      background-color: transparent;
+      height: 52px;
+      left: calc(50.00% - 123px);
+      mix-blend-mode: normal;
+      object-fit: cover;
+      pointer-events: auto;
+      position: absolute;
+      top: 25px;
+      transition: all 0.2s ease;
+      width: 52px;
+    }
+
+    .imac-1 .image-9-I5VOZV:hover {
+      transform: translate(0, -5px);
+    }
+
+    .imac-1 .image-10-I5VOZV {
+      background-color: transparent;
+      height: 50px;
+      left: calc(50.00% - 46px);
+      mix-blend-mode: normal;
+      object-fit: cover;
+      pointer-events: auto;
+      position: absolute;
+      top: 25px;
+      transition: all 0.2s ease;
+      width: 52px;
+    }
+
+    .imac-1 .image-10-I5VOZV:hover {
+      transform: translate(0, -5px);
+    }
+
+    .imac-1 .image-11-I5VOZV {
+      background-color: transparent;
+      height: 50px;
+      left: calc(50.00% + 30px);
+      mix-blend-mode: normal;
+      object-fit: cover;
+      pointer-events: auto;
+      position: absolute;
+      top: 25px;
+      transition: all 0.2s ease;
+      width: 52px;
+    }
+
+    .imac-1 .image-11-I5VOZV:hover {
+      transform: translate(0, -5px);
+    }
+
+    .imac-1 .image-12-I5VOZV {
+      background-color: transparent;
+      height: 50px;
+      left: calc(50.00% + 107px);
+      mix-blend-mode: normal;
+      object-fit: cover;
+      pointer-events: auto;
+      position: absolute;
+      top: 25px;
+      transition: all 0.2s ease;
+      width: 52px;
+    }
+
+    .imac-1 .image-12-I5VOZV:hover {
+      transform: translate(0, -5px);
+    }
+
+    .imac-1 .image-13-I5VOZV {
+      background-color: transparent;
+      height: 50px;
+      left: calc(50.00% + 183px);
+      mix-blend-mode: normal;
+      object-fit: cover;
+      pointer-events: auto;
+      position: absolute;
+      top: 25px;
+      transition: all 0.2s ease;
+      width: 52px;
+    }
+
+    .imac-1 .image-13-I5VOZV:hover {
+      transform: translate(0, -5px);
+    }
+
+    .imac-1 .image-14-I5VOZV {
+      background-color: transparent;
+      height: 53px;
+      left: calc(50.00% + 234px);
+      mix-blend-mode: normal;
+      object-fit: cover;
+      pointer-events: auto;
+      position: absolute;
+      top: 22px;
+      transition: all 0.2s ease;
+      width: 103px;
+    }
+
+    .imac-1 .image-14-I5VOZV:hover {
+      transform: translate(0, -5px);
+    }
+
+    .imac-1 .image-16-I5VOZV {
+      background-color: transparent;
+      height: 51px;
+      left: calc(50.00% + 336px);
+      mix-blend-mode: normal;
+      object-fit: cover;
+      pointer-events: auto;
+      position: absolute;
+      top: 23px;
+      transition: all 0.2s ease;
+      width: 52px;
+    }
+
+    .imac-1 .image-16-I5VOZV:hover {
+      transform: translate(0, -5px);
+    }
+
+    .imac-1 .image-17-I5VOZV {
+      background-color: transparent;
+      height: 57px;
+      left: calc(50.00% + 412px);
+      mix-blend-mode: normal;
+      object-fit: cover;
+      pointer-events: auto;
+      position: absolute;
+      top: 20px;
+      transition: all 0.2s ease;
+      width: 52px;
+    }
+
+    .imac-1 .image-17-I5VOZV:hover {
+      transform: translate(0, -5px);
+    }
+
+    .imac-1 .section5-DDrdaV {
+      background-color: transparent;
+      height: 730px;
+      left: calc(50.00% - 666px);
+      position: absolute;
+      top: 3207px;
+      width: 1323px;
+    }
+
+    .imac-1 .gallery-y7N9bE {
+      background-color: transparent;
+      height: auto;
+      left: calc(50.00% - 198px);
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      position: absolute;
+      text-align: center;
+      top: 2px;
+      width: 403px;
+    }
+
+    .imac-1 .group-18-y7N9bE {
+      background-color: transparent;
+      height: 610px;
+      left: 0px;
+      position: absolute;
+      top: 120px;
+      width: 99.85%;
+    }
+
+    .imac-1 .rectangle-5-WVnYQK {
+      background-color: transparent;
+      height: 216px;
+      left: 25.01%;
+      mix-blend-mode: normal;
+      object-fit: cover;
+      position: absolute;
+      top: 0px;
+      width: 24.45%;
+    }
+
+    .imac-1 .rectangle-9-WVnYQK {
+      background-color: transparent;
+      height: 382px;
+      left: 25.01%;
+      mix-blend-mode: normal;
+      object-fit: cover;
+      position: absolute;
+      top: 228px;
+      width: 24.45%;
+    }
+
+    .imac-1 .rectangle-10-WVnYQK {
+      background-color: transparent;
+      height: 182px;
+      left: 50.30%;
+      mix-blend-mode: normal;
+      object-fit: cover;
+      position: absolute;
+      top: 428px;
+      width: 24.45%;
+    }
+
+    .imac-1 .rectangle-11-WVnYQK {
+      background-color: transparent;
+      height: 217px;
+      left: 75.58%;
+      mix-blend-mode: normal;
+      object-fit: cover;
+      position: absolute;
+      top: 0px;
+      width: 24.45%;
+    }
+
+    .imac-1 .rectangle-6-WVnYQK {
+      background-color: transparent;
+      height: 416px;
+      left: 50.30%;
+      mix-blend-mode: normal;
+      object-fit: cover;
+      position: absolute;
+      top: 0px;
+      width: 24.45%;
+    }
+
+    .imac-1 .rectangle-7-WVnYQK {
+      background-color: transparent;
+      height: 382px;
+      left: 75.58%;
+      mix-blend-mode: normal;
+      object-fit: cover;
+      position: absolute;
+      top: 228px;
+      width: 24.45%;
+    }
+
+    .imac-1 .rectangle-8-WVnYQK {
+      background-color: transparent;
+      height: 610px;
+      left: 0px;
+      mix-blend-mode: normal;
+      object-fit: cover;
+      position: absolute;
+      top: 0px;
+      width: 24.45%;
+    }
+
+    .imac-1 .section-6-DDrdaV {
+      background-color: transparent;
+      height: 666px;
+      left: 0px;
+      position: absolute;
+      top: 3983px;
+      width: 100%;
+    }
+
+    .imac-1 .layered-peaks-haikei-YvP1rZ {
+      background-color: transparent;
+      height: 666px;
+      left: 0px;
+      mix-blend-mode: normal;
+      position: absolute;
+      top: 0px;
+      width: 100%;
+    }
+
+    .imac-1 .group-35-YvP1rZ {
+      background-color: transparent;
+      height: 524px;
+      left: 832px;
+      position: absolute;
+      top: 66px;
+      width: calc(100.00% - 965px);
+    }
+
+    .imac-1 .ping-me-WIxKNG {
+      background-color: transparent;
+      height: auto;
+      left: 1px;
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      position: absolute;
+      text-align: center;
+      top: 2px;
+      width: calc(100.00% - 3px);
+    }
+
+    .imac-1 .group-12-WIxKNG {
+      background-color: transparent;
+      height: 54px;
+      position: absolute;
+      right: 17px;
+      top: 89px;
+      width: 367px;
+    }
+
+    .imac-1 .rectangle-3-F6pr8w {
+      background-color: var(--pickled-bluewood);
+      border-radius: 25px;
+      height: 54px;
+      mix-blend-mode: normal;
+      position: absolute;
+      right: 2px;
+      top: 0px;
+      width: 365px;
+    }
+
+    .imac-1 .name-F6pr8w {
+      background-color: transparent;
+      border: 0;
+      height: 39px;
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      padding: 0;
+      position: absolute;
+      resize: none;
+      right: 31px;
+      text-align: left;
+      top: 7px;
+      width: 312px;
+    }
+
+    .imac-1 .name-F6pr8w::placeholder {
+      color: #e4e4e499;
+    }
+
+    .imac-1 .group-13-WIxKNG {
+      background-color: transparent;
+      height: 62px;
+      position: absolute;
+      right: 17px;
+      top: 173px;
+      width: 367px;
+    }
+
+    .imac-1 .rectangle-3-qapCpu {
+      background-color: var(--pickled-bluewood);
+      border-radius: 25px;
+      height: 62px;
+      mix-blend-mode: normal;
+      position: absolute;
+      right: 2px;
+      top: 0px;
+      width: 365px;
+    }
+
+    .imac-1 .email-id-qapCpu {
+      background-color: transparent;
+      border: 0;
+      height: 45px;
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      padding: 0;
+      position: absolute;
+      resize: none;
+      right: 31px;
+      text-align: left;
+      top: 8px;
+      width: 312px;
+    }
+
+    .imac-1 .email-id-qapCpu::placeholder {
+      color: #e4e4e499;
+    }
+
+    .imac-1 .group-14-WIxKNG {
+      background-color: transparent;
+      height: 170px;
+      position: absolute;
+      right: 17px;
+      top: 260px;
+      width: 370px;
+    }
+
+    .imac-1 .rectangle-4-ULZCU0 {
+      background-color: var(--pickled-bluewood);
+      border-radius: 25px;
+      height: 170px;
+      mix-blend-mode: normal;
+      position: absolute;
+      right: 2px;
+      top: 0px;
+      width: 368px;
+    }
+
+    .imac-1 .email-id-ULZCU0 {
+      background-color: transparent;
+      border: 0;
+      height: 122px;
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      padding: 0;
+      position: absolute;
+      resize: none;
+      right: 34px;
+      text-align: left;
+      top: 25px;
+      width: 309px;
+    }
+
+    .imac-1 .email-id-ULZCU0::placeholder {
+      color: #e4e4e499;
+    }
+
+    .imac-1 .rectangle-3-WIxKNG {
+      background-color: #0066ff;
+      border-radius: 25px;
+      cursor: pointer;
+      height: 69px;
+      mix-blend-mode: normal;
+      position: absolute;
+      right: 87px;
+      top: 455px;
+      width: 237px;
+    }
+
+    .imac-1 .submit-WIxKNG {
+      background-color: transparent;
+      color: var(--white);
+      cursor: pointer;
+      font-family: var(--font-family-poppins);
+      font-size: 30px;
+      font-style: normal;
+      font-weight: 600;
+      height: auto;
+      letter-spacing: 0.00px;
+      line-height: normal;
+      mix-blend-mode: normal;
+      position: absolute;
+      right: 117px;
+      text-align: center;
+      top: 467px;
+      width: 178px;
+    }
+
+    @media screen and (max-width: 1365px) {
+      .screen.imac-1 {
+        display: none;
+      }
+    }
+
+    @media screen and (min-width: 1366px) {
+      .screen.google-pixel-2-1 {
+        display: none;
+      }
+    }
+
+    ::-webkit-scrollbar {
+    display: none;
+}
+  </style>
+  <meta name="author" content="AnimaApp.com - Design to code, Automated.">
+</head>
+
+<body style="margin: 0;background: #001220;"><input type="hidden" id="anPageName" name="page" value="imac-1">
+  <form class="google-pixel-2-1 screen " data-id="91:74" name="form1" action="form1" method="post"><input type="text"
+      name="trapit" value="" style="display:none;">
+    <div class="section-1-1xqTZi" data-id="91:93">
+      <div class="layered-waves-haikei-4-gWxHKZ bp2-animate-enter" data-id="91:78"><img class="vector-D8w1Qc"
+          data-id="91:79" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/vector@2x.png"><img
+          class="vector-dgUGoT" data-id="91:80"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/vector-1@2x.png"><img
+          class="vector-QNYzc5" data-id="91:81"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/vector-2@2x.png"><img
+          class="vector-Cb3W6N" data-id="91:82"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/vector-3@2x.png"><img
+          class="vector-76VupT" data-id="91:83"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/vector-4@2x.png"><img
+          class="vector-rYSUfp" data-id="91:84"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/vector-5@2x.png">
+      </div>
+      <div class="group-1-gWxHKZ bp2-animate-enter1" data-id="91:85"><img class="image-1-DyQ3IJ" data-id="91:86"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/image-1@2x.png"><img
+          class="image-2-DyQ3IJ" data-id="91:87"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/image-2@2x.png"><img
+          class="image-3-DyQ3IJ" data-id="91:88"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/image-3@2x.png"><img
+          class="image-4-DyQ3IJ" data-id="91:89"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/image-4@2x.png"><img
+          class="image-5-DyQ3IJ" data-id="91:90"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/image-5@2x.png">
+      </div><img class="image-18-gWxHKZ bp2-animate-enter2" data-id="91:92"
+        src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+        anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/image-18@2x.png">
+      <div class="hey-im-avdhut-kamble-gWxHKZ poppins-semi-bold-white-36px bp2-animate-enter3" data-id="91:75">Hey, I’m
+        <br>Avdhut Kamble.
+      </div>
+      <p class="let-me-tell-you-games-and-music-gWxHKZ bp2-animate-enter4" data-id="91:77">Let me tell you a little bit
+        about myself. I&#39;m currently working as a Web Designer @ Excite Systems Pvt.Ltd. I&#39;ve been writing code
+        for a a while now, working with various different languages and technologies, most notably; Python, Javascript
+        and Cpp. In my free time, I enjoy reading books, watching web shows, video games, and music.</p>
     </div>
-  </div>
-  
- 
-  
-  </body>
+    <div class="section-2-1xqTZi" data-id="95:207">
+      <div class="layered-waves-haikei-6-mGwtNE" data-id="91:131"><img class="vector-G9Wbbf" data-id="91:133"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/vector-6@2x.png"><img
+          class="vector-fpWBIO" data-id="91:134"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/vector-7@2x.png"><img
+          class="vector-vtceCx" data-id="91:135"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/vector-8@2x.png"><img
+          class="vector-fQq8Oj" data-id="91:136"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/vector-9@2x.png"><img
+          class="vector-Pgjy3K" data-id="91:137"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/vector-10@2x.png">
+        <div class="group-5-G9Wbbf" data-id="165:14">
+          <div class="rectangle-1-bVsxKx" data-id="165:15"></div>
+          <div class="automate-birthday-emails-bVsxKx poppins-bold-white-18px" data-id="165:16">Automate Birthday Emails
+          </div><img class="image-1-bVsxKx" data-id="165:17"
+            src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+            anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/image-1-1@2x.png">
+          <p class="automate-birthd-n-various-means-bVsxKx spacemono-bold-nobel-13px" data-id="165:18">
+            AutomateBirthdayEmails.py project is a automated system which sends emails considering the birthdays data
+            given. Though small, it turns out to be quite helpful. This system could be transformed to your own good in
+            various means.</p>
+          <div class="august-26th-2020-bVsxKx spacemono-bold-sonic-silver-11px" data-id="165:19">August 26th, 2020</div>
+        </div>
+        <div class="group-2-G9Wbbf" data-id="165:20">
+          <div class="rectangle-1-XQvfqF" data-id="165:21"></div>
+          <div class="automate-birthday-emails-XQvfqF poppins-bold-white-18px" data-id="165:22">Automate Birthday Emails
+          </div><img class="image-1-XQvfqF" data-id="165:23"
+            src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+            anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/image-1-1@2x.png">
+          <p class="automate-birthd-n-various-means-XQvfqF spacemono-bold-nobel-13px" data-id="165:24">
+            AutomateBirthdayEmails.py project is a automated system which sends emails considering the birthdays data
+            given. Though small, it turns out to be quite helpful. This system could be transformed to your own good in
+            various means.</p>
+          <div class="august-26th-2020-XQvfqF spacemono-bold-sonic-silver-11px" data-id="165:25">August 26th, 2020</div>
+        </div>
+      </div>
+      <div class="projects-mGwtNE poppins-semi-bold-white-36px bp2-animate-enter5" data-id="91:94" show-on-scroll>
+        Projects</div>
+      <div class="group-2-mGwtNE" data-id="91:95">
+        <div class="rectangle-1-KMoxPL" data-id="91:96"></div>
+        <div class="automate-birthday-emails-KMoxPL poppins-bold-white-18px" data-id="91:97">Automate Birthday Emails
+        </div><img class="image-1-KMoxPL" data-id="91:98"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/image-1-3@2x.png">
+        <p class="automate-birthd-n-various-means-KMoxPL spacemono-bold-nobel-13px" data-id="91:99">
+          AutomateBirthdayEmails.py project is a automated system which sends emails considering the birthdays data
+          given. Though small, it turns out to be quite helpful. This system could be transformed to your own good in
+          various means.</p>
+        <div class="august-26th-2020-KMoxPL spacemono-bold-sonic-silver-11px" data-id="91:100">August 26th, 2020</div>
+      </div>
+      <div class="group-3-mGwtNE" data-id="165:2">
+        <div class="rectangle-1-qc0Bxv" data-id="165:3"></div>
+        <div class="automate-birthday-emails-qc0Bxv poppins-bold-white-18px" data-id="165:4">Automate Birthday Emails
+        </div><img class="image-1-qc0Bxv" data-id="165:5"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/image-1-1@2x.png">
+        <p class="automate-birthd-n-various-means-qc0Bxv spacemono-bold-nobel-13px" data-id="165:6">
+          AutomateBirthdayEmails.py project is a automated system which sends emails considering the birthdays data
+          given. Though small, it turns out to be quite helpful. This system could be transformed to your own good in
+          various means.</p>
+        <div class="august-26th-2020-qc0Bxv spacemono-bold-sonic-silver-11px" data-id="165:7">August 26th, 2020</div>
+      </div>
+      <div class="group-4-mGwtNE" data-id="165:8">
+        <div class="rectangle-1-0xsca6" data-id="165:9"></div>
+        <div class="automate-birthday-emails-0xsca6 poppins-bold-white-18px" data-id="165:10">Automate Birthday Emails
+        </div><img class="image-1-0xsca6" data-id="165:11"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/image-1-1@2x.png">
+        <p class="automate-birthd-n-various-means-0xsca6 spacemono-bold-nobel-13px" data-id="165:12">
+          AutomateBirthdayEmails.py project is a automated system which sends emails considering the birthdays data
+          given. Though small, it turns out to be quite helpful. This system could be transformed to your own good in
+          various means.</p>
+        <div class="august-26th-2020-0xsca6 spacemono-bold-sonic-silver-11px" data-id="165:13">August 26th, 2020</div>
+      </div>
+    </div>
+    <div class="section-3-1xqTZi" data-id="95:206">
+      <div class="layered-waves-haikei-3-mo2Lst" data-id="95:198"><img class="vector-7eFAqe" data-id="95:199"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/vector-11@1x.png"><img
+          class="vector-l9Zqml" data-id="95:200"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/vector-12@1x.png"><img
+          class="vector-p2WbEi" data-id="95:201"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/vector-13@1x.png"><img
+          class="vector-r4031F" data-id="95:202"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/vector-14@1x.png"><img
+          class="vector-IXCCSn" data-id="95:203"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/vector-15@1x.png">
+      </div>
+      <div class="education-work-experience-mo2Lst poppins-semi-bold-white-36px" data-id="91:164">Education &amp; Work
+        Experience</div><img class="group-27-mo2Lst" data-id="91:170"
+        src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+        anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/group-27@2x.png"><img
+        class="group-8-mo2Lst" data-id="95:178"
+        src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+        anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/group-8@1x.png">
+      <div class="group-29-mo2Lst" data-id="95:188">
+        <div class="x2014-ZjxH2m poppins-light-white-13px" data-id="95:190">2014</div>
+        <p class="don-bosco-high-school-pune-ZjxH2m poppins-medium-white-14px" data-id="95:191">Don Bosco High School,
+          Pune.</p>
+        <div class="secondary-education-ZjxH2m poppins-normal-white-12px" data-id="95:192">Secondary Education</div>
+      </div>
+      <div class="group-30-mo2Lst" data-id="95:193">
+        <div class="x2021-GEGsxO poppins-light-white-13px" data-id="95:195">2021</div>
+        <div class="excite-systems-pvt-ltd-GEGsxO poppins-medium-white-14px" data-id="95:196">Excite Systems Pvt. ltd.
+        </div>
+        <div class="web-design-intern-GEGsxO poppins-normal-white-12px" data-id="95:197">Web Design Intern</div>
+      </div>
+      <div class="group-28-mo2Lst" data-id="95:183">
+        <div class="x2019-XdwceI poppins-light-white-13px" data-id="95:185">2019</div>
+        <p class="cusrow-wadia-in-technology-pune-XdwceI poppins-medium-white-14px" data-id="95:186">Cusrow Wadia
+          Institute of Technology, Pune.</p>
+        <div class="diploma-in-comp-ter-engineering-XdwceI poppins-normal-white-12px" data-id="95:187">Diploma in
+          Computer Engineering</div>
+      </div>
+    </div>
+    <div class="section-4-1xqTZi" data-id="95:243">
+      <div class="layered-waves-haikei-4-xx9oE5" data-id="95:237"><img class="vector-1e1RK9" data-id="95:238"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/vector-16@2x.png"><img
+          class="vector-HXyb82" data-id="95:239"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/vector-17@2x.png"><img
+          class="vector-GlHyMf" data-id="95:240"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/vector-18@2x.png"><img
+          class="vector-Y8rbF9" data-id="95:241"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/vector-19@2x.png"><img
+          class="vector-Cmknmb" data-id="95:242"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/vector-20@2x.png">
+      </div>
+      <div class="tech-stack-ive-worked-with-xx9oE5 poppins-semi-bold-white-36px" data-id="95:205">Tech Stack I’ve
+        Worked With</div>
+      <div class="frame-9-xx9oE5" data-id="95:208">
+        <div class="group-33-sTUnHt" data-id="95:236"><img class="image-6-HOhkvb" data-id="95:222"
+            src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+            anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/image-6@2x.png">
+          <div class="group-15-HOhkvb" data-id="95:210">
+            <div class="g3-DbCPrr" data-id="95:211"><img class="path5-1f8Fs9" data-id="95:212"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+                anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/path5@2x.png"><img
+                class="path7-1f8Fs9" data-id="95:213"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+                anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/path7@2x.png">
+            </div>
+            <div class="g9-DbCPrr" data-id="95:214">
+              <div class="g11-wXvUuX" data-id="95:215"><img class="path13-FXOv4q" data-id="95:216"
+                  src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+                  anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/path13@2x.png"><img
+                  class="path15-FXOv4q" data-id="95:217"
+                  src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+                  anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/path15@2x.png"><img
+                  class="path17-FXOv4q" data-id="95:218"
+                  src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+                  anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/path17@2x.png"><img
+                  class="path19-FXOv4q" data-id="95:219"
+                  src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+                  anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/path19@2x.png"><img
+                  class="path21-FXOv4q" data-id="95:220"
+                  src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+                  anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/path21@2x.png">
+              </div>
+            </div>
+            <div class="scikit-DbCPrr" data-id="95:221">scikit</div>
+          </div><img class="image-7-HOhkvb" data-id="95:223"
+            src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+            anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/image-7@2x.png"><img
+            class="image-8-HOhkvb" data-id="95:224"
+            src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+            anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/image-8@2x.png">
+        </div>
+        <div class="group-31-sTUnHt" data-id="95:233"><img class="image-9-ydJr83" data-id="95:225"
+            src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+            anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/image-9@2x.png"><img
+            class="image-10-ydJr83" data-id="95:226"
+            src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+            anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/image-10@2x.png"><img
+            class="image-11-ydJr83" data-id="95:227"
+            src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+            anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/image-11@2x.png"><img
+            class="image-12-ydJr83" data-id="95:228"
+            src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+            anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/image-12@2x.png">
+        </div>
+        <div class="group-32-sTUnHt" data-id="95:235"><img class="image-13-xvfGku" data-id="95:229"
+            src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+            anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/image-13@2x.png"><img
+            class="image-14-xvfGku" data-id="95:230"
+            src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+            anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/image-14@2x.png"><img
+            class="image-16-xvfGku" data-id="95:231"
+            src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+            anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/image-16@2x.png"><img
+            class="image-17-xvfGku" data-id="95:232"
+            src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+            anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/image-17@2x.png">
+        </div>
+      </div>
+    </div>
+    <div class="section-5-1xqTZi" data-id="95:276">
+      <div class="group-18-ircyC5" data-id="95:246"><img class="rectangle-5-dhSMxt" data-id="95:247"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/rectangle-5@2x.png"><img
+          class="rectangle-9-dhSMxt" data-id="95:248"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/rectangle-9@2x.png"><img
+          class="rectangle-8-dhSMxt" data-id="95:253"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/rectangle-8@2x.png">
+      </div>
+      <div class="group-34-ircyC5" data-id="95:254"><img class="rectangle-10-q1QbQY" data-id="95:249"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/rectangle-10@2x.png"><img
+          class="rectangle-11-q1QbQY" data-id="95:250"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/rectangle-11@2x.png"><img
+          class="rectangle-6-q1QbQY" data-id="95:251"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/rectangle-6@2x.png"><img
+          class="rectangle-7-q1QbQY" data-id="95:252"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/rectangle-7@2x.png">
+      </div>
+      <div class="gallery-ircyC5 poppins-semi-bold-white-36px" data-id="95:245">Gallery</div>
+    </div>
+    <div class="section-6-1xqTZi" data-id="95:277">
+      <div class="layered-peaks-haikei-78CbrO" data-id="95:269"><img class="vector-OlBRst" data-id="95:271"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/vector-21@2x.png"><img
+          class="vector-Bkwjg2" data-id="95:272"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/vector-22@2x.png"><img
+          class="vector-R3K4ZR" data-id="95:273"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/vector-23@2x.png"><img
+          class="vector-xuRPR6" data-id="95:274"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/vector-24@2x.png"><img
+          class="vector-ae5XOZ" data-id="95:275"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/vector-25@2x.png">
+      </div>
+      <div class="ping-me-78CbrO poppins-semi-bold-white-36px" data-id="95:257">Ping me!</div>
+      <div class="group-12-78CbrO" data-id="95:258">
+        <div class="rectangle-3-Geceqa" data-id="95:259"></div><input class="name-Geceqa spacemono-normal-mercury-14px"
+          data-id="95:260" name="name" placeholder="Name" type="text">
+      </div>
+      <div class="group-13-78CbrO" data-id="95:261">
+        <div class="rectangle-3-j6pnyi" data-id="95:262"></div><input
+          class="email-id-j6pnyi spacemono-normal-mercury-14px" data-id="95:263" name="emailid" placeholder="Email Id"
+          type="email">
+      </div>
+      <div class="group-14-78CbrO" data-id="95:264">
+        <div class="rectangle-4-0ddDHG" data-id="95:265"></div><textarea
+          class="email-id-0ddDHG spacemono-normal-mercury-14px" data-id="95:266" name="emailid" placeholder="Message.."
+          type="text"></textarea>
+      </div>
+      <div class="group-38-78CbrO" data-id="181:28">
+        <div class="rectangle-3-cOVx9s" data-id="95:267"></div><a href="javascript:SubmitForm('form1')">
+          <div class="submit-cOVx9s" data-id="95:268">Submit</div>
+        </a>
+      </div>
+    </div>
+  </form>
+  <form class="imac-1 screen " data-id="2:2" name="form3" action="form3" method="post"><input type="text" name="trapit"
+      value="" style="display:none;">
+    <div class="section-1-DDrdaV" data-id="91:50"><img class="layered-waves-haikei-4-2HyJ5T bp1-animate-enter"
+        data-id="28:53" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+        anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a900299db253c79555aa/img/layered-waves-haikei--4-@1x.png">
+      <h1 class="hey-im-avdhut-kamble-2HyJ5T bp1-animate-enter1" data-id="2:3">Hey, I’m <br>Avdhut Kamble.</h1>
+      <div class="group-1-2HyJ5T bp1-animate-enter2" data-id="2:15"><img class="image-1-xW5cFY" data-id="2:6"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/image-1-6@1x.png"><img
+          class="image-2-xW5cFY" data-id="2:8"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/image-2-1@1x.png"><img
+          class="image-3-xW5cFY" data-id="2:10"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/image-3-1@1x.png"><img
+          class="image-4-xW5cFY" data-id="2:12"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/image-4-1@1x.png"><img
+          class="image-5-xW5cFY" data-id="2:14"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/image-5-1@1x.png">
+      </div><img class="image-18-2HyJ5T bp1-animate-enter3" data-id="54:25"
+        src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+        anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/image-18-1@2x.png">
+      <div class="let-me-tell-you-games-and-music-2HyJ5T bp1-animate-enter4" data-id="2:4">Let me tell you a little bit
+        about myself. I&#39;m currently working as a Web Designer @ Excite Systems Pvt.Ltd. I&#39;ve been writing code
+        for a a while now, working with various different languages and technologies, most notably; Python, Javascript
+        and Cpp. In my free time, I enjoy reading books, watching web shows, video games, and music.</div>
+    </div>
+    <div class="layered-waves-haikei-16-1-DDrdaV" data-id="181:36"><img class="vector-AAtJcN" data-id="181:37"
+        src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+        anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a900299db253c79555aa/img/vector-26@1x.png"><img
+        class="vector-NFLgL1" data-id="181:38"
+        src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+        anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a900299db253c79555aa/img/vector-27@1x.png"><img
+        class="vector-1m0tPx" data-id="181:39"
+        src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+        anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a900299db253c79555aa/img/vector-28@1x.png"><img
+        class="vector-BBm44F" data-id="181:40"
+        src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+        anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a900299db253c79555aa/img/vector-29@1x.png"><img
+        class="vector-KD5H6P" data-id="181:41"
+        src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+        anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a900299db253c79555aa/img/vector-30@1x.png"><img
+        class="vector-szd6AE" data-id="181:42"
+        src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+        anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a900299db253c79555aa/img/vector-31@1x.png"><img
+        class="vector-Jhktk7" data-id="181:43"
+        src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+        anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a900299db253c79555aa/img/vector-32@1x.png"><img
+        class="vector-SofsqV" data-id="181:44"
+        src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+        anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a900299db253c79555aa/img/vector-33@1x.png">
+    </div>
+    <div class="section-2-DDrdaV" data-id="91:52">
+      <div class="projects-GYSGjX poppins-semi-bold-white-48px" data-id="4:24">Projects</div>
+      <div class="group-37-GYSGjX" data-id="153:2">
+        <div class="group-16-GAz2Lo bp1-animate-enter5" data-id="79:3" show-on-scroll>
+          <div class="group-10-9OTaKp" data-id="44:167">
+            <div class="rectangle-1-xmBE58" data-id="44:168"></div>
+            <div class="august-26th-2020-xmBE58 spacemono-bold-sonic-silver-12px" data-id="79:2">August 26th, 2020</div>
+            <div class="automate-birthday-emails-xmBE58 poppins-bold-white-24px" data-id="44:169">Automate Birthday
+              Emails</div><img class="image-1-xmBE58" data-id="44:170"
+              src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+              anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/image-1-7@2x.png">
+            <p class="automate-birthd-n-various-means-xmBE58 spacemono-bold-nobel-14px" data-id="44:171">
+              AutomateBirthdayEmails.py project is a automated system which sends emails considering the birthdays data
+              given. Though small, it turns out to be quite helpful. This system could be transformed to your own good
+              in various means.</p>
+          </div>
+        </div>
+        <div class="group-17-GAz2Lo bp1-animate-enter6" data-id="79:4" show-on-scroll>
+          <div class="group-2-Phpy9o" data-id="79:5">
+            <div class="rectangle-1-Kbzttd" data-id="79:6"></div>
+            <div class="automate-birthday-emails-Kbzttd poppins-bold-white-24px" data-id="79:7">Automate Birthday Emails
+            </div><img class="image-1-Kbzttd" data-id="79:8"
+              src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+              anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/image-1-8@2x.png">
+            <p class="automate-birthd-n-various-means-Kbzttd spacemono-bold-nobel-14px" data-id="79:9">
+              AutomateBirthdayEmails.py project is a automated system which sends emails considering the birthdays data
+              given. Though small, it turns out to be quite helpful. This system could be transformed to your own good
+              in various means.</p>
+            <div class="august-26th-2020-Kbzttd spacemono-bold-sonic-silver-12px" data-id="79:10">August 26th, 2020
+            </div>
+          </div>
+          <div class="group-10-Phpy9o" data-id="79:11">
+            <div class="rectangle-1-xqGbtj" data-id="79:12"></div>
+            <div class="august-26th-2020-xqGbtj spacemono-bold-sonic-silver-12px" data-id="79:13">August 26th, 2020
+            </div>
+            <div class="automate-birthday-emails-xqGbtj poppins-bold-white-24px" data-id="79:14">Automate Birthday
+              Emails</div><img class="image-1-xqGbtj" data-id="79:15"
+              src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+              anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/image-1-7@2x.png">
+            <p class="automate-birthd-n-various-means-xqGbtj spacemono-bold-nobel-14px" data-id="79:16">
+              AutomateBirthdayEmails.py project is a automated system which sends emails considering the birthdays data
+              given. Though small, it turns out to be quite helpful. This system could be transformed to your own good
+              in various means.</p>
+          </div>
+        </div>
+        <div class="frame-16-GAz2Lo" data-id="79:17">
+          <div class="group-2-lEqicV" data-id="79:18">
+            <div class="rectangle-1-OiBOQa" data-id="79:19"></div>
+            <div class="automate-birthday-emails-OiBOQa poppins-bold-white-24px" data-id="79:20">Automate Birthday
+              Emails</div><img class="image-1-OiBOQa" data-id="79:21"
+              src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+              anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/image-1-10@2x.png">
+            <p class="automate-birthd-n-various-means-OiBOQa spacemono-bold-nobel-14px" data-id="79:22">
+              AutomateBirthdayEmails.py project is a automated system which sends emails considering the birthdays data
+              given. Though small, it turns out to be quite helpful. This system could be transformed to your own good
+              in various means.</p>
+            <div class="august-26th-2020-OiBOQa spacemono-bold-sonic-silver-12px" data-id="79:23">August 26th, 2020
+            </div>
+          </div>
+          <div class="group-10-lEqicV" data-id="79:24">
+            <div class="rectangle-1-ooRhOA" data-id="79:25"></div>
+            <div class="august-26th-2020-ooRhOA spacemono-bold-sonic-silver-12px" data-id="79:26">August 26th, 2020
+            </div>
+            <div class="automate-birthday-emails-ooRhOA poppins-bold-white-24px" data-id="79:27">Automate Birthday
+              Emails</div><img class="image-1-ooRhOA" data-id="79:28"
+              src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+              anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/image-1-11@2x.png">
+            <p class="automate-birthd-n-various-means-ooRhOA spacemono-bold-nobel-14px" data-id="79:29">
+              AutomateBirthdayEmails.py project is a automated system which sends emails considering the birthdays data
+              given. Though small, it turns out to be quite helpful. This system could be transformed to your own good
+              in various means.</p>
+          </div>
+        </div><img class="group-2-GAz2Lo bp1-animate-enter7" data-id="4:30"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/group-2@1x.png">
+      </div>
+    </div>
+    <div class="section3-DDrdaV" data-id="91:53"><img class="layered-waves-haikei-3-s7pSsR" data-id="28:46"
+        src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+        anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a900299db253c79555aa/img/layered-waves-haikei--3-@1x.png">
+      <div class="education-work-experience-s7pSsR poppins-semi-bold-white-48px bp1-animate-enter8" data-id="8:4"
+        show-on-scroll>Education &amp; Work Experience</div>
+      <div class="group-8-s7pSsR bp1-animate-enter9" data-id="15:19" show-on-scroll>
+        <div class="x2009-hARSXC poppins-light-white-18px" data-id="15:16">2009</div>
+        <div class="don-bosco-high-school-pune-hARSXC poppins-medium-white-20px" data-id="15:17">Don Bosco High School,
+          Pune.</div>
+        <div class="primary-education-hARSXC poppins-normal-white-14px" data-id="15:18">Primary Education</div>
+      </div><img class="group-27-s7pSsR bp1-animate-enter10" data-id="91:167" show-on-scroll
+        src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+        anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/group-27-1@1x.png">
+      <div class="group-26-s7pSsR bp1-animate-enter11" data-id="91:166" show-on-scroll>
+        <div class="x2009-JpZxV7 poppins-light-white-18px" data-id="15:28">2009</div>
+        <div class="don-bosco-high-school-pune-JpZxV7 poppins-medium-white-20px" data-id="15:29">Don Bosco High School,
+          Pune.</div>
+        <div class="primary-education-JpZxV7 poppins-normal-white-14px" data-id="15:30">Primary Education</div>
+      </div>
+      <div class="group-25-s7pSsR bp1-animate-enter12" data-id="91:165" show-on-scroll>
+        <div class="x2009-faD0Fw poppins-light-white-18px" data-id="15:38">2009</div>
+        <div class="don-bosco-high-school-pune-faD0Fw poppins-medium-white-20px" data-id="15:39">Don Bosco High School,
+          Pune.</div>
+        <div class="primary-education-faD0Fw poppins-normal-white-14px" data-id="15:40">Primary Education</div>
+      </div>
+      <div class="group-24-s7pSsR bp1-animate-enter13" data-id="91:60" show-on-scroll>
+        <div class="x2009-F3NyTM poppins-light-white-18px" data-id="91:62">2009</div>
+        <div class="don-bosco-high-school-pune-F3NyTM poppins-medium-white-20px" data-id="91:63">Don Bosco High School,
+          Pune.</div>
+        <div class="primary-education-F3NyTM poppins-normal-white-14px" data-id="91:64">Primary Education</div>
+      </div>
+    </div>
+    <div class="section-4-DDrdaV" data-id="91:54">
+      <div class="layered-waves-haikei-4-zOTQeH" data-id="91:67"><img class="vector-9E4Lq2" data-id="91:68"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a900299db253c79555aa/img/vector-34@1x.png"><img
+          class="vector-bJwrL0" data-id="91:69"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a900299db253c79555aa/img/vector-35@1x.png"><img
+          class="vector-df9F8M" data-id="91:70"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a900299db253c79555aa/img/vector-36@1x.png"><img
+          class="vector-N8DhjP" data-id="91:71"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a900299db253c79555aa/img/vector-37@1x.png"><img
+          class="vector-xchKNb" data-id="91:72"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a900299db253c79555aa/img/vector-38@1x.png">
+      </div>
+      <div class="tech-stack-ive-worked-with-zOTQeH poppins-semi-bold-white-48px" data-id="27:45">Tech Stack I’ve Worked
+        With</div>
+      <div class="group-9-zOTQeH" data-id="44:166"><img class="rectangle-2-I5VOZV" data-id="28:67"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/rectangle-2@1x.png"><img
+          class="group-15-I5VOZV smart-layers-pointers" data-id="64:2"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/group-15@1x.png"><img
+          class="image-6-I5VOZV smart-layers-pointers" data-id="28:73"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/image-6-1@1x.png"><img
+          class="image-7-I5VOZV smart-layers-pointers" data-id="28:99"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/image-7-1@1x.png"><img
+          class="image-8-I5VOZV smart-layers-pointers" data-id="28:101"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/image-8-1@1x.png"><img
+          class="image-9-I5VOZV smart-layers-pointers" data-id="28:107"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/image-9-1@1x.png"><img
+          class="image-10-I5VOZV smart-layers-pointers" data-id="28:109"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/image-10-1@1x.png"><img
+          class="image-11-I5VOZV smart-layers-pointers" data-id="28:111"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/image-11-1@1x.png"><img
+          class="image-12-I5VOZV smart-layers-pointers" data-id="28:115"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/image-12-1@1x.png"><img
+          class="image-13-I5VOZV smart-layers-pointers" data-id="28:117"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/image-13-1@1x.png"><img
+          class="image-14-I5VOZV smart-layers-pointers" data-id="28:121"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/image-14-1@1x.png"><img
+          class="image-16-I5VOZV smart-layers-pointers" data-id="28:125"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/image-16-1@1x.png"><img
+          class="image-17-I5VOZV smart-layers-pointers" data-id="28:127"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/image-17-1@1x.png">
+      </div>
+    </div>
+    <div class="section5-DDrdaV" data-id="149:2">
+      <div class="gallery-y7N9bE poppins-semi-bold-white-48px" data-id="91:66">Gallery</div>
+      <div class="group-18-y7N9bE" data-id="79:30"><img class="rectangle-5-WVnYQK" data-id="56:41"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/rectangle-5-1@2x.png"><img
+          class="rectangle-9-WVnYQK" data-id="56:45"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/rectangle-9-1@2x.png"><img
+          class="rectangle-10-WVnYQK" data-id="56:46"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/rectangle-10-1@2x.png"><img
+          class="rectangle-11-WVnYQK" data-id="56:47"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/rectangle-11-1@2x.png"><img
+          class="rectangle-6-WVnYQK" data-id="56:42"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/rectangle-6-1@2x.png"><img
+          class="rectangle-7-WVnYQK" data-id="56:43"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/rectangle-7-1@2x.png"><img
+          class="rectangle-8-WVnYQK" data-id="56:44"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a1dbacb07f15328ea119/img/rectangle-8-1@1x.png">
+      </div>
+    </div>
+    <div class="section-6-DDrdaV" data-id="91:55"><img class="layered-peaks-haikei-YvP1rZ" data-id="28:144"
+        src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+        anima-src="https://cdn.animaapp.com/projects/6137a0557e1c72d65b230b41/releases/6137a900299db253c79555aa/img/layered-peaks-haikei@1x.png">
+      <div class="group-35-YvP1rZ" data-id="95:255">
+        <div class="ping-me-WIxKNG poppins-semi-bold-white-48px" data-id="28:163">Ping me!</div>
+        <div class="group-12-WIxKNG" data-id="56:29">
+          <div class="rectangle-3-F6pr8w" data-id="28:164"></div><input
+            class="name-F6pr8w spacemono-normal-mercury-18px" data-id="54:27" name="name" placeholder="Name"
+            type="text">
+        </div>
+        <div class="group-13-WIxKNG" data-id="56:32">
+          <div class="rectangle-3-qapCpu" data-id="56:33"></div><input
+            class="email-id-qapCpu spacemono-normal-mercury-18px" data-id="56:34" name="emailid" placeholder="Email Id"
+            type="email">
+        </div>
+        <div class="group-14-WIxKNG" data-id="56:35">
+          <div class="rectangle-4-ULZCU0" data-id="56:38"></div><textarea
+            class="email-id-ULZCU0 spacemono-normal-mercury-18px" data-id="56:37" name="emailid" placeholder="Message.."
+            type="text"></textarea>
+        </div><a href="javascript:SubmitForm('form3')">
+          <div class="rectangle-3-WIxKNG" data-id="56:36"></div>
+        </a><a href="javascript:SubmitForm('form3')">
+          <div class="submit-WIxKNG" data-id="56:39">Submit</div>
+        </a>
+      </div>
+    </div>
+  </form>
+  <script src="launchpad-js/launchpad-banner.js" async></script>
+  <script defer src="https://animaapp.s3.amazonaws.com/static/restart-btn.min.js"></script>
+  <script>function ShowOnScroll() {
+      this.toShow = [];
+      this.nextEventY = undefined;
+    }
+
+    ShowOnScroll.prototype.show = function (e) {
+      e.style.display = "";
+    };
+
+    ShowOnScroll.prototype.hide = function (e) {
+      e.style.display = "none";
+    };
+
+    ShowOnScroll.prototype.getTop = function (e) {
+      if (e.Top != undefined && e.Top != 0) {
+        return e.Top;
+      }
+      var top = 0;
+      var iter = e;
+      do {
+        top += iter.offsetTop || 0;
+        iter = iter.offsetParent;
+      } while (iter);
+      e.Top = top;
+      return top;
+    };
+
+    ShowOnScroll.prototype.onScroll = function () {
+      var screenBottom = window.pageYOffset + window.innerHeight;
+      if (this.nextEventY == undefined || this.nextEventY > screenBottom) {
+        return;
+      }
+      this.nextEventY = undefined;
+      for (var i = 0; i < this.toShow.length; i++) {
+        var e = this.toShow[i];
+        var top = this.getTop(e);
+        if (top < screenBottom) {
+          this.show(e);
+          this.toShow.shift();
+          i--;
+        } else {
+          this.nextEventY = top;
+          break;
+        }
+      }
+    };
+
+    ShowOnScroll.prototype.resetScrolling = function () {
+      // Clear state
+      var screenBottom = window.pageYOffset + window.innerHeight;
+      for (var i = 0; i < this.toShow.length; i++) {
+        var e = this.toShow[i];
+        this.show(e);
+      }
+      this.toShow = [];
+      this.nextEventY == undefined;
+
+      // Collect items
+      var itemsToShowOnScroll = Array.prototype.slice.call(document.getElementsByTagName("*"));
+      itemsToShowOnScroll = itemsToShowOnScroll.filter(function (e) { return e.getAttribute("show-on-scroll") != undefined });
+      var getTop = this.getTop;
+      itemsToShowOnScroll.sort(function (a, b) {
+        return getTop(a) - getTop(b);
+      });
+      for (var i = 0; i < itemsToShowOnScroll.length; i++) {
+        var e = itemsToShowOnScroll[i];
+        var top = this.getTop(e);
+        if (top < screenBottom) {
+          continue;
+        }
+        this.toShow.push(e);
+        this.hide(e);
+        this.nextEventY = this.nextEventY != undefined ? this.nextEventY : top;
+      }
+    };
+
+    ShowOnScroll.prototype.handleEvent = function (e) {
+      switch (e.type) {
+        case "scroll":
+          this.onScroll();
+          break;
+        case "resize":
+          this.resetScrolling();
+          break;
+      }
+    };
+
+    ShowOnScroll.prototype.init = function () {
+      this.resetScrolling();
+      window.addEventListener("scroll", this);
+      window.addEventListener("resize", this);
+    };
+
+    // After anima-src
+    setTimeout(function () {
+      var instShowOnScroll = new ShowOnScroll();
+      instShowOnScroll.init();
+    }, 250);</script>
+  <script>/* Copyright (c) 2016 Tobias Buschor https://goo.gl/gl0mbf | MIT License https://goo.gl/HgajeK */
+
+    if (!HTMLFormElement.prototype.reportValidity) {
+      HTMLFormElement.prototype.reportValidity = function () {
+        if (this.checkValidity()) return true;
+        var btn = document.createElement('button');
+        this.appendChild(btn);
+        btn.click();
+        this.removeChild(btn);
+        return false;
+      };
+    }
+
+    function SubmitForm(form_name) {
+      var form = document.getElementsByName(form_name)[0];
+      if (form.reportValidity()) {
+        form.submit();
+        if (window.submitted) window.submitted();
+      }
+    }</script>
+</body>
+
+</html>
